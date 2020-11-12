@@ -51,6 +51,7 @@ const SignIn = () => {
 				</label>
 				<button type='submit' disabled={loading}>Sign In</button>
 			</form>
+			<Link to='/forgot-password'>Forgot Password?</Link>
 			<button onClick={handleSignInGoogle}>Sign In with Google</button>
 			<p>Not an User? <Link to='/signup'>Sign up now</Link></p>
 		</div>

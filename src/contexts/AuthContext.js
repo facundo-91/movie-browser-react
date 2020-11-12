@@ -19,7 +19,8 @@ const AuthProvider = ({ children }) => {
 	const signUpEmail = (email, password) => auth.createUserWithEmailAndPassword(email, password);
 	const signInEmail = (email, password) => auth.signInWithEmailAndPassword(email, password);
 	const signInGoogle = () => auth.signInWithPopup(providers.google);
-	const signOut = () => auth.signOut()
+	const signOut = () => auth.signOut();
+	const resetPassword = email => auth.sendPasswordResetEmail(email);
 
 	// Subscribe to user on mount
 	useEffect(() => {
@@ -37,7 +38,8 @@ const AuthProvider = ({ children }) => {
 		signUpEmail,
 		signInEmail,
     signInGoogle,
-    signOut
+		signOut,
+		resetPassword
 	};
 
 	return (
