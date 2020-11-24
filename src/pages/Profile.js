@@ -10,7 +10,7 @@ const Profile = () => {
 			<p>Email: {currentUser.email}</p>
 			<Link to='/'>Dashboard</Link>
 		</div>
-	)
+	);
 };
 
 export default Profile;

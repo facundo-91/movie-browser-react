@@ -6,19 +6,19 @@ const ForgotPassword = () => {
 	// Hooks
 	const emailRef = useRef();
 	const [error, setError] = useState('');
-	const [message, setMessage] = useState('')
+	const [message, setMessage] = useState('');
 	const [loading, setLoading] = useState(false);
 	const { resetPassword } = useAuth();
 
 	// Methods
-	const handleResetPassword = async e => {
+	const handleResetPassword = async (e) => {
 		e.preventDefault();
 		try {
 			setError('');
-			setMessage('')
+			setMessage('');
 			setLoading(true);
 			await resetPassword(emailRef.current.value);
-			setMessage("Check your Inbox for further instructions");
+			setMessage('Check your Inbox for further instructions');
 		} catch {
 			setError('Failed to reset password');
 			setLoading(false);
@@ -35,9 +35,13 @@ const ForgotPassword = () => {
 					Email
 					<input type='email' ref={emailRef} placeholder='Enter your email' required></input>
 				</label>
-				<button type='submit' disabled={loading}>Reset Password</button>
+				<button type='submit' disabled={loading}>
+					Reset Password
+				</button>
 			</form>
-			<p>Not an User? <Link to='/signup'>Sign up now</Link></p>
+			<p>
+				Not an User? <Link to='/signup'>Sign up now</Link>
+			</p>
 		</div>
 	);
 };

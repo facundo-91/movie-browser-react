@@ -9,19 +9,19 @@ import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
 
 const App = () => {
-  return (
+	return (
 		<Router>
 			<AuthProvider>
 				<Switch>
 					<Route exact path='/' component={Dashboard} />
 					<PrivateRoute path='/profile' component={Profile} />
-					<Route path='/signin' component={SignIn}/>
-					<Route path='/signup' component={SignUp}/>
+					<Route path='/signin' component={SignIn} />
+					<Route path='/signup' component={SignUp} />
 					<Route path='/forgot-password' component={ForgotPassword} />
 				</Switch>
 			</AuthProvider>
 		</Router>
-  );
-}
+	);
+};
 
 export default App;

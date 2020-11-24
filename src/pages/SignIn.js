@@ -6,13 +6,13 @@ const SignIn = () => {
 	// Hooks
 	const emailRef = useRef();
 	const passwordRef = useRef();
-	const [error, setError] = useState("");
+	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
 	const { signInEmail, signInGoogle } = useAuth();
 	const history = useHistory();
 
 	// Methods
-	const handleSignInEmail = async e => {
+	const handleSignInEmail = async (e) => {
 		e.preventDefault();
 		try {
 			setError('');
@@ -29,12 +29,12 @@ const SignIn = () => {
 			setError('');
 			setLoading(true);
 			await signInGoogle();
-			history.push("/");
+			history.push('/');
 		} catch {
 			setError('Failed to Sign In');
 			setLoading(false);
-	 }
- };
+		}
+	};
 
 	return (
 		<div>
@@ -47,13 +47,21 @@ const SignIn = () => {
 				</label>
 				<label>
 					Password
-					<input type='password' ref={passwordRef} placeholder='Enter your password' required></input>
+					<input
+						type='password'
+						ref={passwordRef}
+						placeholder='Enter your password'
+						required></input>
 				</label>
-				<button type='submit' disabled={loading}>Sign In</button>
+				<button type='submit' disabled={loading}>
+					Sign In
+				</button>
 			</form>
 			<Link to='/forgot-password'>Forgot Password?</Link>
 			<button onClick={handleSignInGoogle}>Sign In with Google</button>
-			<p>Not an User? <Link to='/signup'>Sign up now</Link></p>
+			<p>
+				Not an User? <Link to='/signup'>Sign up now</Link>
+			</p>
 		</div>
 	);
 };
