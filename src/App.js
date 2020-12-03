@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from './pages/PrivateRoute';
 import Dashboard from './pages/Dashboard';
+import MovieInfo from './pages/MovieInfo';
 import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -14,6 +15,7 @@ const App = () => {
 			<AuthProvider>
 				<Switch>
 					<Route exact path='/' component={Dashboard} />
+					<Route path='/movie/:id' component={MovieInfo} />
 					<PrivateRoute path='/profile' component={Profile} />
 					<Route path='/signin' component={SignIn} />
 					<Route path='/signup' component={SignUp} />

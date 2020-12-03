@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import defaultProfileImg from '../assets/user-profile.png';
 import appLogo from '../assets/logo.png';
 
-const Navbar = () => {
+const Navbar = ({ handleSearch }) => {
 	// Hooks
 	const { currentUser, signOut } = useAuth();
 	const [showDiv, setShowDiv] = useState(false);
@@ -33,6 +33,7 @@ const Navbar = () => {
 					<input
 						className='h-8 w-full pl-10 pr-3 rounded-3xl border border-white-custom border-opacity-25 bg-black-custom text-white-custom text-sm font-light focus:outline-none focus:border-opacity-50 hover:border-opacity-50 sm:text-base'
 						type='search'
+						onChange={(e) => handleSearch(e.target.value)}
 						placeholder='Enter a movie title'></input>
 					<div className='absolute top-0 left-0 ml-3 my-2'>
 						<svg
@@ -44,7 +45,7 @@ const Navbar = () => {
 					</div>
 				</div>
 				{currentUser ? (
-					<div className='relative'>
+					<div className='relative z-20'>
 						<button
 							className='block relative z-10 h-10 w-10 rounded-full overflow-hidden border-2 border-transparent focus:outline-none focus:border-white-custom focus:border-opacity-50 hover:border-white-custom'
 							onClick={() => setShowDiv(!showDiv)}>

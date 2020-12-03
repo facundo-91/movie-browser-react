@@ -1,25 +1,25 @@
 module.exports = {
 	future: {},
-  purge: [
-    'src/**/*.js',
-    'src/**/*.jsx',
-    'src/**/*.ts',
-    'src/**/*.tsx',
-    'public/**/*.html',
-  ],
-  theme: {
-    extend: {
+	purge: ['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx', 'public/**/*.html'],
+	theme: {
+		extend: {
 			fontFamily: {
-        sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
-      },
+				sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+			},
 			colors: {
 				'red-custom': '#E50914',
 				'white-custom': '#F2F2F2',
 				'gray-custom': '#101011',
-				'black-custom': '#030303'
-			}
+				'black-custom': '#030303',
+			},
+			minWidth: {
+				10: '10%',
+			},
 		},
-  },
-  variants: {},
-  plugins: [],
-}
+	},
+	variants: {
+		zIndex: ['hover', 'active'],
+		extend: {},
+	},
+	plugins: [],
+};
