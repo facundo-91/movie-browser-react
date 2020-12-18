@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const MovieInfo = ({ match }) => {
+	// States
 	const [movieInfo, setMovieInfo] = useState([]);
 
+	// Effects
 	useEffect(() => {
 		const getMovieInfo = async () => {
 			const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${process.env.REACT_APP_TMDB_API}`;
@@ -11,8 +13,7 @@ const MovieInfo = ({ match }) => {
 			setMovieInfo(responseJson);
 		};
 		getMovieInfo();
-	}, [match]);
-	console.log(movieInfo);
+	}, [match.params.id, setMovieInfo]);
 
 	return (
 		<div

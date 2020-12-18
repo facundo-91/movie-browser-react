@@ -1,22 +1,52 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { useMovies } from '../contexts/MoviesContext';
 import defaultProfileImg from '../assets/user-profile.png';
 import appLogo from '../assets/logo.png';
 
-const Navbar = ({ handleSearch }) => {
+const Navbar = () => {
 	// Hooks
 	const { currentUser, signOut } = useAuth();
+	const { searchInputValue, setSearchInputValue, setSearchResult } = useMovies();
+	const location = useLocation();
+	const history = useHistory();
 	const [showDiv, setShowDiv] = useState(false);
 
-	// Methods
-	const handleEscape = (e) => {
-		if (e.key === 'esc' || e.key === 'Escape') {
-			setShowDiv(false);
-		}
-	};
-
+	// Effects
+	// Debounce Search
 	useEffect(() => {
+		const handleSearch = async () => {
+			if (searchInputValue.length > 0) {
+				const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API}&query=${searchInputValue}`;
+				const response = await fetch(url);
+				const responseJson = await response.json();
+				setSearchResult(responseJson.results);
+				history.push(`/search/${searchInputValue}`);
+			} else {
+				setSearchResult([]);
+				history.push(`/`);
+			}
+		};
+		const timeOutId = setTimeout(() => handleSearch(), 500);
+		return () => {
+			clearTimeout(timeOutId);
+		};
+	}, [searchInputValue, setSearchResult, history]);
+
+	// Close profile menu on url change
+	useEffect(() => {
+		setShowDiv(false);
+	}, [location.pathname, setShowDiv]);
+
+	// Event listener to close profile menu with Esc
+	useEffect(() => {
+		const handleEscape = (e) => {
+			if (e.key === 'esc' || e.key === 'Escape') {
+				setShowDiv(false);
+			}
+		};
 		document.addEventListener('keydown', handleEscape);
 		return () => {
 			document.removeEventListener('keydown', handleEscape);
@@ -33,7 +63,8 @@ const Navbar = ({ handleSearch }) => {
 					<input
 						className='h-8 w-full pl-10 pr-3 rounded-3xl border border-white-custom border-opacity-25 bg-black-custom text-white-custom text-sm font-light focus:outline-none focus:border-opacity-50 hover:border-opacity-50 sm:text-base'
 						type='search'
-						onChange={(e) => handleSearch(e.target.value)}
+						onChange={(e) => setSearchInputValue(e.target.value)}
+						value={searchInputValue}
 						placeholder='Enter a movie title'></input>
 					<div className='absolute top-0 left-0 ml-3 my-2'>
 						<svg
