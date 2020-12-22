@@ -19,7 +19,7 @@ const MovieInfo = ({ match }) => {
 		<div
 			className='bg-cover h-screen w-auto'
 			style={{
-				backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieInfo.backdrop_path})`,
+				backgroundImage: `url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
 			}}>
 			<div>
 				<p>{movieInfo.title}</p>

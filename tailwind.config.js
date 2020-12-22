@@ -15,6 +15,18 @@ module.exports = {
 			minWidth: {
 				10: '10%',
 			},
+			width: {
+				72: '18rem',
+				84: '21rem',
+				96: '24rem',
+				120: '30rem',
+			},
+			minHeight: {
+				'screen-75': '75vh',
+			},
+			height: {
+				75: '75vh',
+			},
 		},
 	},
 	variants: {

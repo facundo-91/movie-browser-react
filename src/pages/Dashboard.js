@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import MovieList from '../components/MovieList';
+import MovieHero from '../components/MovieHero';
 
 const Dashboard = () => {
 	// States
@@ -7,6 +8,7 @@ const Dashboard = () => {
 	const [upcomingList, setUpcomingList] = useState([]);
 	const [nowPlayingList, setNowPlayingList] = useState([]);
 	const [topRatedList, setTopRatedList] = useState([]);
+	const [movieHeroID, setMovieHeroID] = useState();
 
 	// Effects
 	useEffect(() => {
@@ -40,8 +42,13 @@ const Dashboard = () => {
 		getTopRatedList();
 	}, []);
 
+	useEffect(() => {
+		if (trendingList.length > 0) setMovieHeroID(trendingList[0].id);
+	}, [trendingList]);
+
 	return (
-		<div className='pt-4 pb-2 bg-black-custom text-white-custom'>
+		<div className='pb-2 bg-black-custom text-white-custom'>
+			<MovieHero id={movieHeroID} />
 			<MovieList title='Trending Today' movieList={trendingList} />
 			<MovieList title='Now Playing' movieList={nowPlayingList} />
 			<MovieList title='Upcoming Movies' movieList={upcomingList} />
