@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useFirestore } from '../contexts/FirestoreContext';
 
 const MovieHero = ({ id }) => {
-	// States
+	// Hooks
+	const { addMovie } = useFirestore();
 	const [movieInfo, setMovieInfo] = useState([]);
 	const [runtime, setRuntime] = useState('');
 	const [rating, setRating] = useState(null);
@@ -45,7 +48,7 @@ const MovieHero = ({ id }) => {
 		<header
 			className='mb-4 min-h-screen-75 h-75 w-full bg-center bg-cover bg-no-repeat'
 			style={{
-				backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 25%, rgba(0, 0, 0, 0) 100%), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
+				backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0) 100%), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
 			}}>
 			<div className='w-6/12 mx-24 h-full flex flex-col justify-center'>
 				<h1 className='mb-2 text-5xl font-bold'>{movieInfo.title}</h1>
@@ -97,17 +100,19 @@ const MovieHero = ({ id }) => {
 							<path d='M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z' />
 						</svg>
 					</div>
-					<p className='mx-4'>{movieInfo.release_date}</p>
-					<p className='mx-4'>{runtime}</p>
+					<p className='ml-4 mr-2'>{movieInfo.release_date}</p>
+					<p className='ml-2'>{runtime}</p>
 				</div>
 				<div className='w-120 mb-8'>
 					<p className='text-base font-hairline text-white-custom'>{movieInfo.overview}</p>
 				</div>
 				<div>
-					<button className='py-2 px-4 mr-6 w-32 font-bold border-2 border-red-custom bg-red-custom'>
-						More Info
+					<button className='py-2 px-6 mr-6 font-bold uppercase bg-red-custom rounded-sm border border-red-custom'>
+						<Link to={`/movie/${id}`}>More Info</Link>
 					</button>
-					<button className='py-2 px-4 w-48 font-bold border-2 border-white-custom'>
+					<button
+						className='py-2 px-6 font-bold uppercase bg-black bg-opacity-75 rounded-sm border border-white-custom border-opacity-75'
+						onClick={() => addMovie(movieInfo.id, movieInfo.poster_path)}>
 						Add to Watchlist
 					</button>
 				</div>
