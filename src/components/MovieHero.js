@@ -4,10 +4,11 @@ import { useFirestore } from '../contexts/FirestoreContext';
 
 const MovieHero = ({ id }) => {
 	// Hooks
-	const { addMovie } = useFirestore();
+	const { addMovie, removeMovie, moviesWatchlist } = useFirestore();
 	const [movieInfo, setMovieInfo] = useState([]);
 	const [runtime, setRuntime] = useState('');
 	const [rating, setRating] = useState(null);
+	const [watchlisted, setWatchlisted] = useState(false);
 
 	// Effects
 	// Fetch movie info
@@ -43,6 +44,12 @@ const MovieHero = ({ id }) => {
 			setRating(movieInfo.vote_average);
 		}
 	}, [movieInfo]);
+
+	// Check if movie is watchlisted
+	useEffect(() => {
+		const watchlistState = moviesWatchlist.some((movie) => movie.movie_id === id);
+		setWatchlisted(watchlistState);
+	}, [moviesWatchlist, id]);
 
 	return (
 		<header
@@ -110,11 +117,19 @@ const MovieHero = ({ id }) => {
 					<button className='py-2 px-6 mr-6 font-bold uppercase bg-red-custom rounded-sm border border-red-custom'>
 						<Link to={`/movie/${id}`}>More Info</Link>
 					</button>
-					<button
-						className='py-2 px-6 font-bold uppercase bg-black bg-opacity-75 rounded-sm border border-white-custom border-opacity-75'
-						onClick={() => addMovie(movieInfo.id, movieInfo.poster_path)}>
-						Add to Watchlist
-					</button>
+					{watchlisted ? (
+						<button
+							className='py-2 px-6 font-bold uppercase bg-black bg-opacity-75 rounded-sm border border-white-custom border-opacity-75'
+							onClick={() => removeMovie(`${movieInfo.id}`)}>
+							Remove from My list
+						</button>
+					) : (
+						<button
+							className='py-2 px-6 font-bold uppercase bg-black bg-opacity-75 rounded-sm border border-white-custom border-opacity-75'
+							onClick={() => addMovie(movieInfo.id, movieInfo.poster_path)}>
+							+ My list
+						</button>
+					)}
 				</div>
 			</div>
 		</header>

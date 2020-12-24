@@ -22,7 +22,8 @@ const FirestoreProvider = ({ children }) => {
 			.collection('users')
 			.doc(currentUser.uid)
 			.collection('movies')
-			.add({ movie_id, poster_url });
+			.doc(`${movie_id}`)
+			.set({ movie_id, poster_url });
 	};
 	const removeMovie = (id) => {
 		database.collection('users').doc(currentUser.uid).collection('movies').doc(id).delete();
