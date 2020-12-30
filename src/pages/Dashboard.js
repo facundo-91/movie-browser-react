@@ -47,12 +47,14 @@ const Dashboard = () => {
 	}, [trendingList]);
 
 	return (
-		<div className='pb-2 bg-black-custom text-white-custom'>
+		<div className='bg-black-custom text-white-custom'>
 			<MovieHero id={movieHeroID} />
-			<MovieList title='Trending Today' movieList={trendingList} />
-			<MovieList title='Now Playing' movieList={nowPlayingList} />
-			<MovieList title='Upcoming Movies' movieList={upcomingList} />
-			<MovieList title='Top Rated' movieList={topRatedList} />
+			<div className='pb-2 -mt-screen-20 bg-opacity-100'>
+				<MovieList title='Trending Today' movieList={trendingList} />
+				<MovieList title='Now Playing' movieList={nowPlayingList} />
+				<MovieList title='Upcoming Movies' movieList={upcomingList} />
+				<MovieList title='Top Rated' movieList={topRatedList} />
+			</div>
 		</div>
 	);
 };

@@ -13,6 +13,7 @@ const Navbar = () => {
 	const location = useLocation();
 	const history = useHistory();
 	const [showDiv, setShowDiv] = useState(false);
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	// Effects
 	// Debounce Search
@@ -53,9 +54,25 @@ const Navbar = () => {
 		};
 	}, []);
 
+	// Event listener for scrolling position
+	useEffect(() => {
+		const handleScroll = () => {
+			const position = window.pageYOffset;
+			setScrollPosition(position);
+		};
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+
 	return (
-		<nav className='flex items-center h-16 border-b-2 border-black-custom bg-gray-custom'>
-			<div className='container flex items-center mx-auto px-2 justify-between'>
+		<nav
+			className={
+				'flex items-center h-16 w-full fixed z-30 transition duration-700 ease-out ' +
+				(scrollPosition > 0 ? 'bg-gray-custom bg-opacity-100' : 'bg-gray-custom bg-opacity-10')
+			}>
+			<div className='flex items-center w-full mx-10'>
 				<Link to='/' className='flex-shrink-0 h-8 w-8'>
 					<img className='w-auto h-auto' src={appLogo} alt='App logo'></img>
 				</Link>
@@ -76,9 +93,9 @@ const Navbar = () => {
 					</div>
 				</div>
 				{currentUser ? (
-					<div className='relative z-20'>
+					<div className='relative z-30'>
 						<button
-							className='block relative z-10 h-10 w-10 rounded-full overflow-hidden border-2 border-transparent focus:outline-none focus:border-white-custom focus:border-opacity-50 hover:border-white-custom'
+							className='block relative z-20 h-10 w-10 rounded-full overflow-hidden border-2 border-transparent focus:outline-none focus:border-white-custom focus:border-opacity-50 hover:border-white-custom'
 							onClick={() => setShowDiv(!showDiv)}>
 							<img
 								className='h-full w-full object-cover'
