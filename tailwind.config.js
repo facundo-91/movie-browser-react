@@ -11,6 +11,11 @@ module.exports = {
 				'2/20': '10%',
 				'screen-20': '20vh',
 			},
+			inset: {
+				8: '2rem',
+				10: '2.5rem',
+				11: '2.75rem',
+			},
 			fontFamily: {
 				sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
 			},
@@ -26,6 +31,7 @@ module.exports = {
 			},
 			minWidth: {
 				10: '10rem',
+				'1/8': '12.5%',
 			},
 			maxWidth: {
 				'min-content': 'min-content',
@@ -35,7 +41,7 @@ module.exports = {
 				84: '21rem',
 				96: '24rem',
 				120: '30rem',
-				12.5: '12.5%',
+				'1/8': '12.5%',
 			},
 			minHeight: {
 				'screen-80': '80vh',
@@ -43,6 +49,7 @@ module.exports = {
 			height: {
 				'screen-20': '20vh',
 				'screen-80': '80vh',
+				80: '80%',
 			},
 		},
 	},
