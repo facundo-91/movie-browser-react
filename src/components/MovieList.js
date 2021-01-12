@@ -36,7 +36,7 @@ const MovieList = ({ title, movieList }) => {
 
 	return (
 		<div className='mb-2'>
-			<h3 className='ml-10 -mb-6 text-xl font-bold'>{title}</h3>
+			<h3 className='ml-10 -mb-10 text-xl font-bold'>{title}</h3>
 			<div
 				className='flex items-center relative'
 				onMouseEnter={() => setHoverOnContainer(true)}
@@ -45,7 +45,7 @@ const MovieList = ({ title, movieList }) => {
 					<button
 						className={
 							(hoverOnContainer ? 'opacity-100 ' : 'opacity-0 ') +
-							'w-16 h-80 top-8 left-0 z-10 absolute bg-gradient-to-r from-black to-transparent transition-all duration-200 ease-in-out focus:outline-none'
+							'w-16 h-3/4 top-auto left-0 z-20 absolute bg-gradient-to-r from-black to-transparent transition-all duration-200 ease-in-out focus:outline-none'
 						}
 						onClick={() => scrollToLeft()}>
 						<svg
@@ -62,7 +62,7 @@ const MovieList = ({ title, movieList }) => {
 					</button>
 				)}
 				<div
-					className='w-full py-8 overflow-hidden'
+					className='w-full py-12 overflow-hidden'
 					ref={movieListContainer}
 					style={{ scrollBehavior: 'smooth' }}>
 					<div className='px-10 flex flex-no-wrap'>
@@ -75,7 +75,7 @@ const MovieList = ({ title, movieList }) => {
 					<button
 						className={
 							(hoverOnContainer ? 'opacity-100 ' : 'opacity-0 ') +
-							'w-16 h-80 top-8 right-0 z-10 absolute bg-gradient-to-l from-black to-transparent transition-all duration-200 ease-in-out focus:outline-none'
+							'w-16 h-3/4 top-auto right-0 z-20 absolute bg-gradient-to-l from-black to-transparent transition-all duration-200 ease-in-out focus:outline-none'
 						}
 						onClick={() => scrollToRight()}>
 						<svg

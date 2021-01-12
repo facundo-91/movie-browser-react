@@ -7,14 +7,16 @@ module.exports = {
 				'2xl': '1536px',
 			},
 			spacing: {
+				72: '18rem',
+				84: '21rem',
+				96: '24rem',
+				120: '30rem',
 				'1/20': '5%',
 				'2/20': '10%',
+				'1/8': '12.5%',
+				'3/4': '75%',
 				'screen-20': '20vh',
-			},
-			inset: {
-				8: '2rem',
-				10: '2.5rem',
-				11: '2.75rem',
+				'screen-80': '80vh',
 			},
 			fontFamily: {
 				sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
@@ -30,26 +32,11 @@ module.exports = {
 				20: '0.2',
 			},
 			minWidth: {
-				10: '10rem',
-				'1/8': '12.5%',
-			},
-			maxWidth: {
-				'min-content': 'min-content',
-			},
-			width: {
-				72: '18rem',
-				84: '21rem',
-				96: '24rem',
-				120: '30rem',
+				'1/7': '14.285714%',
 				'1/8': '12.5%',
 			},
 			minHeight: {
 				'screen-80': '80vh',
-			},
-			height: {
-				'screen-20': '20vh',
-				'screen-80': '80vh',
-				80: '80%',
 			},
 		},
 	},
