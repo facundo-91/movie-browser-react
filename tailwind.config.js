@@ -15,8 +15,12 @@ module.exports = {
 				'2/20': '10%',
 				'1/8': '12.5%',
 				'3/4': '75%',
+				'9/10': '90%',
 				'screen-20': '20vh',
 				'screen-80': '80vh',
+			},
+			inset: {
+				5: '5%',
 			},
 			fontFamily: {
 				sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
