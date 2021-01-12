@@ -2,11 +2,11 @@ import { useMovies } from '../contexts/MoviesContext';
 import MovieCard from '../components/MovieCard';
 
 const SearchResult = () => {
-	// States
+	// Hooks
 	const { searchResult, searchInputValue } = useMovies();
 
 	return (
-		<div className='pt-24 bg-black-custom text-white-custom'>
+		<div className='pt-24 pb-16'>
 			<h3 className='ml-8 mb-2 text-xl font-bold'>Search results: {searchInputValue}</h3>
 			<div className='px-8 flex flex-wrap'>
 				{searchResult.map((movie) => {

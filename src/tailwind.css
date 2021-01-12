@@ -5,3 +5,7 @@
 	font-family: 'Inter';
 	src: local('Inter'), url(./assets/Inter.ttf) format('ttf');
 }
+body {
+	background-color: #030303;
+	color: #f2f2f2;
+}
