@@ -39,10 +39,12 @@ const FirestoreProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		onChange(currentUser.uid, (movies) => {
-			setMoviesWatchlist(movies);
-		});
-	}, [currentUser.uid]);
+		if (currentUser) {
+			onChange(currentUser.uid, (movies) => {
+				setMoviesWatchlist(movies);
+			});
+		}
+	}, [currentUser]);
 
 	const value = {
 		addMovie,
