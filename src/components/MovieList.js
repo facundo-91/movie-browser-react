@@ -36,7 +36,7 @@ const MovieList = ({ title, movieList }) => {
 
 	return (
 		<div className='mb-6 sm:mb-2'>
-			<h3 className='ml-5 text-xl font-bold sm:ml-10 sm:-mb-10'>{title}</h3>
+			<h3 className='ml-5 text-xl font-bold sm:ml-11 sm:-mb-10'>{title}</h3>
 			<div
 				className='relative flex items-center'
 				onMouseEnter={() => setHoverOnContainer(true)}

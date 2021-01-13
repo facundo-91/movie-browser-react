@@ -7,6 +7,7 @@ module.exports = {
 				'2xl': '1536px',
 			},
 			spacing: {
+				11: '2.75rem',
 				72: '18rem',
 				84: '21rem',
 				96: '24rem',
