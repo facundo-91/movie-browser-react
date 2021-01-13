@@ -49,7 +49,7 @@ const Dashboard = () => {
 	return (
 		<div className='bg-black-custom text-white-custom'>
 			<MovieHero id={movieHeroID} />
-			<div className='pb-2 -mt-screen-20 bg-opacity-100'>
+			<div className='pt-20 pb-2 bg-opacity-100 sm:pt-0 sm:-mt-screen-20'>
 				<MovieList title='Trending Today' movieList={trendingList} />
 				<MovieList title='Now Playing' movieList={nowPlayingList} />
 				<MovieList title='Upcoming Movies' movieList={upcomingList} />

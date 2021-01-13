@@ -35,10 +35,10 @@ const MovieList = ({ title, movieList }) => {
 	}, []);
 
 	return (
-		<div className='mb-2'>
-			<h3 className='ml-10 -mb-10 text-xl font-bold'>{title}</h3>
+		<div className='mb-6 sm:mb-2'>
+			<h3 className='ml-5 text-xl font-bold sm:ml-10 sm:-mb-10'>{title}</h3>
 			<div
-				className='flex items-center relative'
+				className='relative flex items-center'
 				onMouseEnter={() => setHoverOnContainer(true)}
 				onMouseLeave={() => setHoverOnContainer(false)}>
 				{showLeftButton && (
@@ -62,10 +62,10 @@ const MovieList = ({ title, movieList }) => {
 					</button>
 				)}
 				<div
-					className='w-full py-12 overflow-hidden'
+					className='w-full overflow-hidden sm:py-12'
 					ref={movieListContainer}
 					style={{ scrollBehavior: 'smooth' }}>
-					<div className='px-10 flex flex-no-wrap'>
+					<div className='flex flex-no-wrap px-4 sm:px-10'>
 						{movieList.map((movie) => {
 							return <MovieCard key={movie.id} id={movie.id} poster={movie.poster_path} />;
 						})}
