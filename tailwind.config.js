@@ -22,6 +22,11 @@ module.exports = {
 			},
 			inset: {
 				5: '5%',
+				30: '30%',
+				50: '50%',
+			},
+			transformOrigin: {
+				0: '0%',
 			},
 			fontFamily: {
 				sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
@@ -30,7 +35,10 @@ module.exports = {
 				'red-custom': '#E50914',
 				'white-custom': '#F2F2F2',
 				'gray-custom': '#101011',
+				'gray-input': '#333',
+				'gray-input-text': '#8C8C8C',
 				'black-custom': '#030303',
+				'blue-google': '#4285F4',
 			},
 			backgroundOpacity: {
 				10: '0.1',
@@ -43,6 +51,9 @@ module.exports = {
 			},
 			minHeight: {
 				'screen-80': '80vh',
+			},
+			zIndex: {
+				'-1': '-1',
 			},
 		},
 	},
