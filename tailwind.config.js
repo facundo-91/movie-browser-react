@@ -39,6 +39,7 @@ module.exports = {
 				'gray-input-text': '#8C8C8C',
 				'black-custom': '#030303',
 				'blue-google': '#4285F4',
+				'orange-error': '#e87c03',
 			},
 			backgroundOpacity: {
 				10: '0.1',
@@ -51,9 +52,6 @@ module.exports = {
 			},
 			minHeight: {
 				'screen-80': '80vh',
-			},
-			zIndex: {
-				'-1': '-1',
 			},
 		},
 	},

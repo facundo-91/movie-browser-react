@@ -45,10 +45,12 @@ const SignIn = () => {
 				</Link>
 			</div>
 			<div className='px-5 py-4 bg-transparent md:max-w-lg md:mx-auto md:bg-gray-custom md:px-16 md:py-16 md:my-8'>
-				<form className='mx-auto space-y-8 rounded-lg ' onSubmit={handleSignInEmail}>
-					<h1 className='text-4xl font-bold'>Sign In</h1>
-					{error && <p>{error}</p>}
-					<div className='relative'>
+				<h1 className='mb-4 text-4xl font-bold'>Sign In</h1>
+				{error && (
+					<p className='px-5 py-2 mt-6 mb-4 text-sm font-bold rounded bg-orange-error'>{error}</p>
+				)}
+				<form className='mx-auto rounded-lg ' onSubmit={handleSignInEmail}>
+					<div className='relative mb-4'>
 						<input
 							className='block w-full h-12 px-5 pt-4 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
 							id='emailInput'
@@ -62,7 +64,7 @@ const SignIn = () => {
 							Enter your email
 						</label>
 					</div>
-					<div className='relative'>
+					<div className='relative mb-8'>
 						<input
 							className='block w-full h-12 px-5 pt-4 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
 							id='passwordInput'
