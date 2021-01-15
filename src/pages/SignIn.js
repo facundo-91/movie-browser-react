@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import appLogo from '../assets/logo.png';
+import background from '../assets/login-bg.jpg';
 
 const SignIn = () => {
 	// Hooks
@@ -38,14 +39,20 @@ const SignIn = () => {
 	};
 
 	return (
-		<>
+		<div
+			className='pb-8 bg-cover'
+			style={{
+				background: window.matchMedia('(max-width: 768px)').matches
+					? 'none'
+					: `linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(${background})`,
+			}}>
 			<div className='flex w-full'>
-				<Link to='/' className='w-8 h-8 mx-4 my-2 md:my-4'>
+				<Link to='/' className='w-8 h-8 mx-4 my-2 md:my-4 md:mx-8 md:w-12 md:h-12'>
 					<img className='w-auto h-auto' src={appLogo} alt='App logo'></img>
 				</Link>
 			</div>
-			<div className='px-5 py-4 bg-transparent md:max-w-lg md:mx-auto md:bg-gray-custom md:px-16 md:py-16 md:my-8'>
-				<h1 className='mb-4 text-4xl font-bold'>Sign In</h1>
+			<div className='px-5 py-4 md:bg-opacity-75 md:max-w-md md:mx-auto md:bg-black-custom md:px-16 md:py-16 md:mb-12 md:min-h-screen'>
+				<h1 className='mb-4 text-3xl font-bold'>Sign In</h1>
 				{error && (
 					<p className='px-5 py-2 mt-6 mb-4 text-sm font-bold rounded bg-orange-error'>{error}</p>
 				)}
@@ -59,12 +66,12 @@ const SignIn = () => {
 							placeholder=' '
 							required></input>
 						<label
-							className='absolute ml-5 text-sm duration-300 top-30 cursor-text origin-0 text-gray-input-text'
+							className='absolute ml-5 text-sm duration-300 top-30 cursor-text origin-0 text-gray-input-text md:text-base'
 							htmlFor='emailInput'>
 							Enter your email
 						</label>
 					</div>
-					<div className='relative mb-8'>
+					<div className='relative mb-4'>
 						<input
 							className='block w-full h-12 px-5 pt-4 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
 							id='passwordInput'
@@ -73,13 +80,13 @@ const SignIn = () => {
 							placeholder=' '
 							required></input>
 						<label
-							className='absolute ml-5 text-sm duration-300 top-30 cursor-text origin-0 text-gray-input-text'
+							className='absolute ml-5 text-sm duration-300 top-30 cursor-text origin-0 text-gray-input-text md:text-base'
 							htmlFor='passwordInput'>
 							Enter your password
 						</label>
 					</div>
 					<button
-						className='w-full h-12 font-bold rounded bg-red-custom'
+						className='w-full h-12 mt-4 font-bold rounded bg-red-custom'
 						type='submit'
 						disabled={loading}>
 						Sign In
@@ -148,7 +155,7 @@ const SignIn = () => {
 					</button>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

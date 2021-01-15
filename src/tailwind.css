@@ -7,9 +7,9 @@
 }
 
 body {
-	background-color: #030303;
-	color: #f2f2f2;
+	@apply bg-black-custom text-white-custom;
 }
+
 input:focus-within ~ label,
 input:not(:placeholder-shown) ~ label {
 	@apply transform scale-75 -translate-y-3;
