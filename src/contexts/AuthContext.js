@@ -21,6 +21,8 @@ const AuthProvider = ({ children }) => {
 	const signInGoogle = () => auth.signInWithPopup(providers.google);
 	const signOut = () => auth.signOut();
 	const resetPassword = (email) => auth.sendPasswordResetEmail(email);
+	const updateEmail = (email) => currentUser.updateEmail(email);
+	const updatePassword = (password) => currentUser.updatePassword(password);
 
 	// Subscribe to user on mount
 	useEffect(() => {
@@ -40,6 +42,8 @@ const AuthProvider = ({ children }) => {
 		signInGoogle,
 		signOut,
 		resetPassword,
+		updateEmail,
+		updatePassword,
 	};
 
 	return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
