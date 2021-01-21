@@ -23,6 +23,8 @@ const AuthProvider = ({ children }) => {
 	const resetPassword = (email) => auth.sendPasswordResetEmail(email);
 	const updateEmail = (email) => currentUser.updateEmail(email);
 	const updatePassword = (password) => currentUser.updatePassword(password);
+	const updateUser = (username) => currentUser.updateProfile({ displayName: username });
+	const deleteUser = () => currentUser.delete();
 
 	// Subscribe to user on mount
 	useEffect(() => {
@@ -44,6 +46,8 @@ const AuthProvider = ({ children }) => {
 		resetPassword,
 		updateEmail,
 		updatePassword,
+		updateUser,
+		deleteUser,
 	};
 
 	return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
