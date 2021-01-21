@@ -20,13 +20,13 @@ const FirestoreProvider = ({ children }) => {
 	const addMovie = (movie_id, poster_url) => {
 		database
 			.collection('users')
-			.doc(currentUser.uid)
+			.doc(currentUser.email)
 			.collection('movies')
 			.doc(`${movie_id}`)
 			.set({ movie_id, poster_url });
 	};
 	const removeMovie = (id) => {
-		database.collection('users').doc(currentUser.uid).collection('movies').doc(id).delete();
+		database.collection('users').doc(currentUser.email).collection('movies').doc(id).delete();
 	};
 	const onChange = (user, callback) => {
 		database
@@ -39,11 +39,11 @@ const FirestoreProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		if (currentUser) {
-			onChange(currentUser.uid, (movies) => {
-				setMoviesWatchlist(movies);
-			});
-		}
+		currentUser
+			? onChange(currentUser.email, (movies) => {
+					setMoviesWatchlist(movies);
+			  })
+			: setMoviesWatchlist([]);
 	}, [currentUser]);
 
 	const value = {
