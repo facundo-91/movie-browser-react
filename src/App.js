@@ -12,6 +12,10 @@ import Watchlist from './pages/Watchlist';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
+import updateEmail from './pages/UpdateEmail';
+import updatePassword from './pages/UpdatePassword';
+import updateUser from './pages/UpdateUser';
+import deleteAccount from './pages/DeleteAccount';
 
 const App = () => {
 	return (
@@ -24,6 +28,22 @@ const App = () => {
 							<NavRoute path='/movie/:id' component={MovieInfo} />
 							<NavRoute path='/search/:query' component={SearchResult} />
 							<NavRoute path='/profile' component={() => <PrivateRoute component={Profile} />} />
+							<NavRoute
+								path='/update-email'
+								component={() => <PrivateRoute component={updateEmail} />}
+							/>
+							<NavRoute
+								path='/update-password'
+								component={() => <PrivateRoute component={updatePassword} />}
+							/>
+							<NavRoute
+								path='/update-user'
+								component={() => <PrivateRoute component={updateUser} />}
+							/>
+							<NavRoute
+								path='/delete-account'
+								component={() => <PrivateRoute component={deleteAccount} />}
+							/>
 							<NavRoute
 								path='/watchlist'
 								component={() => <PrivateRoute component={Watchlist} />}
