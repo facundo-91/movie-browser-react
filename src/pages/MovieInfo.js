@@ -1,30 +1,41 @@
 import { useEffect, useState } from 'react';
+import MainMovieInfo from '../components/MainMovieInfo';
 
 const MovieInfo = ({ match }) => {
-	// States
-	const [movieInfo, setMovieInfo] = useState([]);
+	// Hooks
+	const [movieInfo, setMovieInfo] = useState({});
+	const [loading, setLoading] = useState(true);
 
 	// Effects
+	// Fetch Movie Info
 	useEffect(() => {
 		const getMovieInfo = async () => {
-			const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${process.env.REACT_APP_TMDB_API}`;
-			const response = await fetch(url);
-			const responseJson = await response.json();
-			setMovieInfo(responseJson);
+			try {
+				setLoading(true);
+				const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${process.env.REACT_APP_TMDB_API}&append_to_response=release_dates`;
+				const response = await fetch(url);
+				const responseJson = await response.json();
+				setMovieInfo(responseJson);
+				setLoading(false);
+			} catch (e) {
+				console.error(e);
+			}
 		};
 		getMovieInfo();
 	}, [match.params.id, setMovieInfo]);
 
 	return (
-		<div
-			className='bg-cover h-screen w-auto'
-			style={{
-				backgroundImage: `url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
-			}}>
-			<div>
-				<p>{movieInfo.title}</p>
+		!loading && (
+			<div
+				className='bg-fixed bg-center bg-cover'
+				style={{
+					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
+				}}>
+				<div className='w-full max-w-lg py-20 mx-auto md:max-w-6xl'>
+					<MainMovieInfo movieData={movieInfo} />
+				</div>
 			</div>
-		</div>
+		)
 	);
 };
 
