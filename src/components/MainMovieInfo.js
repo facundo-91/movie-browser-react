@@ -50,7 +50,7 @@ const MainMovieInfo = ({ movieData }) => {
 	}, [movieData]);
 
 	return (
-		<div className='flex flex-col mx-4 bg-opacity-50 bg-black-custom md:flex-row'>
+		<div className='flex flex-col mx-4 bg-opacity-50 bg-black-custom md:flex-row xl:mx-0'>
 			<div className='relative w-full max-w-lg md:max-w-xs lg:max-w-sm'>
 				<img
 					className='w-full h-auto'
