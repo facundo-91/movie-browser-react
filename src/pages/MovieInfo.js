@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MainMovieInfo from '../components/MainMovieInfo';
 import ActorsInfo from '../components/ActorsInfo';
 import MovieTrailer from '../components/MovieTrailer';
+import MovieRecommendations from '../components/MovieRecommendations';
 
 const MovieInfo = ({ match }) => {
 	// Hooks
@@ -14,7 +15,7 @@ const MovieInfo = ({ match }) => {
 		const getMovieInfo = async () => {
 			try {
 				setLoading(true);
-				const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${process.env.REACT_APP_TMDB_API}&append_to_response=release_dates,credits,videos`;
+				const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${process.env.REACT_APP_TMDB_API}&append_to_response=release_dates,credits,videos,recommendations`;
 				const response = await fetch(url);
 				const responseJson = await response.json();
 				setMovieInfo(responseJson);
@@ -37,6 +38,7 @@ const MovieInfo = ({ match }) => {
 					<MainMovieInfo movieData={movieInfo} />
 					<ActorsInfo movieData={movieInfo} />
 					<MovieTrailer movieData={movieInfo} />
+					<MovieRecommendations movieData={movieInfo} />
 				</div>
 			</div>
 		)
