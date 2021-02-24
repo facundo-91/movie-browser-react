@@ -6,7 +6,7 @@ const MovieTrailer = ({ movieData }) => {
 				<iframe
 					width='560'
 					height='315'
-					className='absolute inset-0 w-full h-full my-2'
+					className='absolute inset-0 w-full h-full my-6'
 					src={`https://www.youtube.com/embed/${movieData.videos.results[0].key}`}
 					frameborder='0'
 					allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
