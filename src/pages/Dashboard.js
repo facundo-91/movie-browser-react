@@ -47,9 +47,12 @@ const Dashboard = () => {
 	}, [trendingList]);
 
 	return (
-		<div className='bg-black-custom text-white-custom'>
+		<div
+			style={{
+				backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 45%)`,
+			}}>
 			<MovieHero id={movieHeroID} />
-			<div className='pt-20 pb-2 bg-opacity-100 sm:pt-0 sm:-mt-screen-20'>
+			<div className='pt-20 pb-2 sm:pt-0 sm:-mt-screen-20'>
 				<MovieList title='Trending Today' movieList={trendingList} />
 				<MovieList title='Now Playing' movieList={nowPlayingList} />
 				<MovieList title='Upcoming Movies' movieList={upcomingList} />

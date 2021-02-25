@@ -36,11 +36,10 @@ module.exports = {
 			colors: {
 				'red-custom': '#E50914',
 				'white-custom': '#F2F2F2',
-				'gray-custom': '#101011',
+				'gray-custom': '#141414',
 				'gray-input': '#333',
 				'gray-input-text': '#8C8C8C',
 				'black-custom': '#030303',
-				'black-profile': '#111516',
 				'blue-google': '#4285F4',
 				'orange-error': '#e87c03',
 				'primary-button': '#FFFFFF',
