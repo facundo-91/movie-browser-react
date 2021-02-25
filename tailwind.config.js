@@ -43,6 +43,8 @@ module.exports = {
 				'black-profile': '#111516',
 				'blue-google': '#4285F4',
 				'orange-error': '#e87c03',
+				'primary-button': '#FFFFFF',
+				'secundary-button': '#6D6D6E',
 			},
 			backgroundOpacity: {
 				10: '0.1',

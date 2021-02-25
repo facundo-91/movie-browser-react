@@ -37,21 +37,33 @@ const MovieHero = ({ id }) => {
 				<div className='mb-4 w-120'>
 					<p className='text-lg text-white-custom'>{movieInfo.overview}</p>
 				</div>
-				<div>
-					<button className='px-6 py-2 mr-6 font-bold uppercase border rounded-sm bg-red-custom border-red-custom'>
+				<div className='flex'>
+					<button className='flex items-center justify-center py-2 pl-4 pr-8 mr-3 font-bold text-black align-middle rounded bg-primary-button focus:outline-none hover:bg-opacity-75'>
+						<img
+							className='w-6 h-6 mx-2'
+							src='https://icongr.am/material/information-outline.svg?size=32&color=000000'
+							alt='Show info icon'></img>
 						<Link to={`/movie/${id}`}>More Info</Link>
 					</button>
 					{watchlisted ? (
 						<button
-							className='px-6 py-2 font-bold uppercase bg-black bg-opacity-75 border border-opacity-75 rounded-sm border-white-custom'
+							className='flex items-center justify-center py-2 pl-4 pr-8 font-bold text-white align-middle bg-opacity-75 rounded bg-secundary-button focus:outline-none hover:bg-opacity-50'
 							onClick={() => removeMovie(`${movieInfo.id}`)}>
+							<img
+								className='w-6 h-6 mx-2'
+								src='https://icongr.am/material/check.svg?size=32&color=ffffff'
+								alt='Remove from list icon'></img>
 							Remove from My list
 						</button>
 					) : (
 						<button
-							className='px-6 py-2 font-bold uppercase bg-black bg-opacity-75 border border-opacity-75 rounded-sm border-white-custom'
+							className='flex items-center justify-center py-2 pl-4 pr-8 font-bold text-white align-middle bg-opacity-75 rounded bg-secundary-button focus:outline-none hover:bg-opacity-50'
 							onClick={() => addMovie(movieInfo.id, movieInfo.poster_path)}>
-							+ My list
+							<img
+								className='w-6 h-6 mx-2'
+								src='https://icongr.am/material/plus.svg?size=32&color=ffffff'
+								alt='Add to my list icon'></img>
+							My list
 						</button>
 					)}
 				</div>
