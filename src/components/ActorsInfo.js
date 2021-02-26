@@ -31,11 +31,11 @@ const ActorsInfo = ({ movieData }) => {
 									alt='Crew Profile'
 									className='w-full h-auto mx-0 my-2 rounded'></img>
 							) : (
-								<div className='flex justify-center h-full align-middle'>
+								<div className='flex justify-center align-middle'>
 									<img
-										src='https://icongr.am/fontawesome/user.svg?size=128&color=currentColor'
+										src='https://icongr.am/fontawesome/user.svg?size=128&color=141414'
 										alt='Crew Profile'
-										className='w-full h-auto bg-red-custom'></img>
+										className='w-full my-2 rounded py-1/4 bg-white-custom'></img>
 								</div>
 							)}
 							<p className='text-sm font-bold md:text-base'>{person.name}</p>
