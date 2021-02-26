@@ -7,13 +7,13 @@ const MovieTrailer = ({ movieData }) => {
 					width='560'
 					height='315'
 					className='absolute inset-0 w-full h-full my-6'
-					src={`https://www.youtube.com/embed/${movieData.videos.results[0].key}`}
+					src={`https://www.youtube-nocookie.com/embed/${movieData.videos.results[0].key}`}
 					frameborder='0'
 					allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
 					allowfullscreen
 					title='Movie Trailer'></iframe>
 			</div>
-			<hr className='w-full h-16 border-b-2 border-gray-input-text'></hr>
+			<hr className='w-full h-24 border-b-2 border-gray-input-text'></hr>
 		</div>
 	);
 };
