@@ -35,7 +35,11 @@ const MovieHero = ({ id }) => {
 			<div className='absolute top-0 flex flex-col justify-end w-1/2 mx-10 bottom-40'>
 				<h1 className='mb-1/20 text-3.5vw font-bold'>{movieInfo.title}</h1>
 				<div className='mb-1/20'>
-					<p className='text-1.5vw text-white-custom'>{movieInfo.overview}</p>
+					<p
+						style={{ textShadow: '2px 2px 4px rgb(0 0 0 / 45%)' }}
+						className='text-1.5vw text-white-custom'>
+						{movieInfo.overview}
+					</p>
 				</div>
 				<div className='flex'>
 					<button className='flex items-center justify-center py-2 pl-1 pr-4 mr-3 font-bold text-black align-middle rounded lg:pl-4 lg:pr-8 2xl:py-3 bg-primary-button focus:outline-none hover:bg-opacity-75'>

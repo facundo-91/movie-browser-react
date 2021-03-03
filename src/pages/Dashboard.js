@@ -43,7 +43,10 @@ const Dashboard = () => {
 	}, []);
 
 	useEffect(() => {
-		if (trendingList.length > 0) setMovieHeroID(trendingList[0].id);
+		if (trendingList.length > 0) {
+			const randomIndex = Math.floor(Math.random() * 10 + 1);
+			setMovieHeroID(trendingList[randomIndex].id);
+		}
 	}, [trendingList]);
 
 	return (
