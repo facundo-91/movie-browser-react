@@ -1,62 +1,75 @@
 import { useState, useEffect } from 'react';
-import MovieList from '../components/MovieList';
 import MovieHero from '../components/MovieHero';
+import MovieCarousel from '../components/MovieCarousel';
 
 const Dashboard = () => {
 	// States
-	const [trendingList, setTrendingList] = useState([]);
+	const [popularList, setPopularList] = useState([]);
 	const [upcomingList, setUpcomingList] = useState([]);
 	const [nowPlayingList, setNowPlayingList] = useState([]);
 	const [topRatedList, setTopRatedList] = useState([]);
 	const [movieHeroID, setMovieHeroID] = useState();
 
-	// Effects
+	// Fetch all the lists of movies
 	useEffect(() => {
-		const getTrendingList = async () => {
-			const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_API}`;
-			const response = await fetch(url);
-			const responseJson = await response.json();
-			setTrendingList(responseJson.results);
+		const getPopularList = async () => {
+			const page1Url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API}`;
+			const page1Response = await fetch(page1Url);
+			const page1ResponseJson = await page1Response.json();
+			const page2Url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API}&page=2`;
+			const page2Response = await fetch(page2Url);
+			const page2ResponseJson = await page2Response.json();
+			setPopularList(page1ResponseJson.results.concat(page2ResponseJson.results));
 		};
 		const getNowPlayingList = async () => {
-			const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API}`;
-			const response = await fetch(url);
-			const responseJson = await response.json();
-			setNowPlayingList(responseJson.results);
+			const page1Url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API}`;
+			const page1Response = await fetch(page1Url);
+			const page1ResponseJson = await page1Response.json();
+			const page2Url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API}&page=2`;
+			const page2Response = await fetch(page2Url);
+			const page2ResponseJson = await page2Response.json();
+			setNowPlayingList(page1ResponseJson.results.concat(page2ResponseJson.results));
 		};
 		const getUpcomingList = async () => {
-			const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API}`;
-			const response = await fetch(url);
-			const responseJson = await response.json();
-			setUpcomingList(responseJson.results);
+			const page1Url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API}`;
+			const page1Response = await fetch(page1Url);
+			const page1ResponseJson = await page1Response.json();
+			const page2Url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API}&page=2`;
+			const page2Response = await fetch(page2Url);
+			const page2ResponseJson = await page2Response.json();
+			setUpcomingList(page1ResponseJson.results.concat(page2ResponseJson.results));
 		};
 		const getTopRatedList = async () => {
-			const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API}`;
-			const response = await fetch(url);
-			const responseJson = await response.json();
-			setTopRatedList(responseJson.results);
+			const page1Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API}`;
+			const page1Response = await fetch(page1Url);
+			const page1ResponseJson = await page1Response.json();
+			const page2Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API}&page=2`;
+			const page2Response = await fetch(page2Url);
+			const page2ResponseJson = await page2Response.json();
+			setTopRatedList(page1ResponseJson.results.concat(page2ResponseJson));
 		};
-		getTrendingList();
+		getPopularList();
 		getNowPlayingList();
 		getUpcomingList();
 		getTopRatedList();
 	}, []);
 
+	// Set a random movie for the Hero section
 	useEffect(() => {
-		if (trendingList.length > 0) {
+		if (popularList.length > 0) {
 			const randomIndex = Math.floor(Math.random() * 10 + 1);
-			setMovieHeroID(trendingList[randomIndex].id);
+			setMovieHeroID(popularList[randomIndex].id);
 		}
-	}, [trendingList]);
+	}, [popularList]);
 
 	return (
 		<>
 			<MovieHero id={movieHeroID} />
-			<div className='relative pt-20 pb-2 md:pt-0 md:-mt-1/6'>
-				<MovieList title='Trending Today' movieList={trendingList} />
-				<MovieList title='Now Playing' movieList={nowPlayingList} />
-				<MovieList title='Upcoming Movies' movieList={upcomingList} />
-				<MovieList title='Top Rated' movieList={topRatedList} />
+			<div className='relative pt-20 pb-2 md:pt-0 md:-mt-1/8'>
+				<MovieCarousel title='Popular Today' movieList={popularList} />
+				<MovieCarousel title='Now Playing' movieList={nowPlayingList} />
+				<MovieCarousel title='Upcoming Movies' movieList={upcomingList} />
+				<MovieCarousel title='Top Rated' movieList={topRatedList} />
 			</div>
 		</>
 	);

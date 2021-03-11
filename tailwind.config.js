@@ -70,6 +70,9 @@ module.exports = {
 	},
 	variants: {
 		zIndex: ['hover', 'active'],
+		transform: ['hover'],
+		transitionProperty: ['hover'],
+		transitionDelay: ['hover'],
 		extend: {},
 	},
 	plugins: [],
