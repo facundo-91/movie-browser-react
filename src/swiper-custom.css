@@ -1,9 +1,14 @@
 :root {
 	--swiper-navigation-size: 2rem;
 	--swiper-navigation-color: transparent;
+	--swiper-pagination-color: transparent;
+	//--swiper-theme-color: transparent;
 }
 .swiper-container:hover {
 	--swiper-navigation-color: #fff;
+	//--swiper-theme-color: #aaa;
+	--swiper-pagination-color: #4d4d4d;
+	--swiper-pagination-active-color: #aaa;
 }
 .swiper-button-disabled {
 	display: none;
@@ -11,10 +16,10 @@
 .swiper-button-prev,
 .swiper-button-next {
 	background: rgba(20, 20, 20, 0.5);
-	width: calc((100% - 23vw) / 16);
+	width: 5%;
 	height: 16.4vw;
 	top: auto;
-	margin-top: 0;
+	margin-top: 24px;
 }
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
@@ -55,4 +60,24 @@
 	.swiper-button-next {
 		display: none;
 	}
+}
+.swiper-pagination {
+	position: relative;
+	text-align: right;
+}
+.swiper-container-horizontal > .swiper-pagination-bullets {
+	bottom: 12px;
+}
+.swiper-pagination-bullet {
+	width: 12px;
+	height: 2px;
+	border-radius: 0;
+	background: var(--swiper-pagination-color);
+	opacity: 1;
+}
+.swiper-pagination-bullet-active {
+	background: var(--swiper-pagination-active-color);
+}
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+	margin: 0 0 0 1px;
 }

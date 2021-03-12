@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
+import SwiperCore, { Navigation, Pagination } from 'swiper';
 
 const MovieCarousel = ({ title, movieList }) => {
-	SwiperCore.use([Navigation]);
+	SwiperCore.use([Navigation, Pagination]);
 
 	return (
 		<div className='mb-6 md:mb-0'>
@@ -15,7 +15,9 @@ const MovieCarousel = ({ title, movieList }) => {
 				spaceBetween={5}
 				simulateTouch={false}
 				navigation
+				pagination
 				watchOverflow
+				roundLengths
 				observer
 				breakpoints={{
 					768: {
