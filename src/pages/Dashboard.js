@@ -46,7 +46,7 @@ const Dashboard = () => {
 			const page2Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API}&page=2`;
 			const page2Response = await fetch(page2Url);
 			const page2ResponseJson = await page2Response.json();
-			setTopRatedList(page1ResponseJson.results.concat(page2ResponseJson));
+			setTopRatedList(page1ResponseJson.results.concat(page2ResponseJson.results));
 		};
 		getPopularList();
 		getNowPlayingList();

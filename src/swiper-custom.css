@@ -1,12 +1,10 @@
 :root {
-	--swiper-navigation-size: 2rem;
+	--swiper-navigation-size: 2.5vw;
 	--swiper-navigation-color: transparent;
 	--swiper-pagination-color: transparent;
-	//--swiper-theme-color: transparent;
 }
 .swiper-container:hover {
 	--swiper-navigation-color: #fff;
-	//--swiper-theme-color: #aaa;
 	--swiper-pagination-color: #4d4d4d;
 	--swiper-pagination-active-color: #aaa;
 }
@@ -16,16 +14,16 @@
 .swiper-button-prev,
 .swiper-button-next {
 	background: rgba(20, 20, 20, 0.5);
-	width: 5%;
-	height: 16.4vw;
-	top: auto;
-	margin-top: 24px;
+	width: calc(5% - 5px);
+	height: calc(62.77% - 1.085rem);
+	top: 0;
+	margin: calc(5% + 24px) 0 0;
 }
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
 	background: rgba(20, 20, 20, 0.75);
 	color: #fff;
-	--swiper-navigation-size: 3rem;
+	--swiper-navigation-size: 3.5vw;
 }
 .swiper-button-prev {
 	left: 0;
@@ -57,7 +55,8 @@
 }
 @media (max-width: 768px) {
 	.swiper-button-prev,
-	.swiper-button-next {
+	.swiper-button-next,
+	.swiper-pagination {
 		display: none;
 	}
 }

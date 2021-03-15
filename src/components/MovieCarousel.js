@@ -7,9 +7,11 @@ const MovieCarousel = ({ title, movieList }) => {
 
 	return (
 		<div className='mb-6 md:mb-0'>
-			<h3 className='ml-1/20 text-lg font-bold md:-mb-12 md:text-1.5vw'>{title}</h3>
+			<div className='relative mb-1 ml-1/20 md:-mb-1/20 md:-bottom-4'>
+				<h3 className='ml-px text-lg font-bold md:text-1.5vw'>{title}</h3>
+			</div>
 			<Swiper
-				className='py-2 px-1/20 md:py-1/20'
+				className='px-1/20 md:py-1/20'
 				slidesPerView={3}
 				slidesPerGroup={3}
 				spaceBetween={5}
@@ -17,7 +19,6 @@ const MovieCarousel = ({ title, movieList }) => {
 				navigation
 				pagination
 				watchOverflow
-				roundLengths
 				observer
 				breakpoints={{
 					768: {

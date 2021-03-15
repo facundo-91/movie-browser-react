@@ -26,6 +26,7 @@ module.exports = {
 				'screen-vw': '56.25vw',
 			},
 			inset: {
+				'-4': '-1rem',
 				5: '5%',
 				25: '25%',
 				40: '40%',
