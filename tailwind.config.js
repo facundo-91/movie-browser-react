@@ -13,7 +13,9 @@ module.exports = {
 				84: '21rem',
 				96: '24rem',
 				120: '30rem',
+				'1/25': '4%',
 				'1/20': '5%',
+				'3/50': '6%',
 				'2/20': '10%',
 				'1/8': '12.5%',
 				'1/6': '16.67%',
@@ -57,6 +59,9 @@ module.exports = {
 			backgroundOpacity: {
 				10: '0.1',
 				20: '0.2',
+			},
+			boxShadow: {
+				custom: '20px 0px 16px 2px rgb(0 0 0 / 75%), -20px 0px 16px 2px rgb(0 0 0 / 75%)',
 			},
 			minWidth: {
 				'1/3': '33.333333%',
