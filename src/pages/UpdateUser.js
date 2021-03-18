@@ -52,7 +52,7 @@ const UpdateUser = () => {
 						<hr className='my-2 border-gray-input-text'></hr>
 						<div className='flex flex-col my-2 md:flex-row md:gap-x-2'>
 							<button
-								className='h-12 mt-4 font-bold tracking-wider uppercase text-black-profile bg-white-custom md:w-1/2'
+								className='h-12 mt-4 font-bold tracking-wider uppercase text-black-custom bg-white-custom md:w-1/2'
 								type='submit'
 								disabled={loading}>
 								Save
