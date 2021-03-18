@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
+import MovieCard from '../components/MovieCard';
 
 const MovieCarousel = ({ title, movieList }) => {
 	SwiperCore.use([Navigation, Pagination]);
@@ -14,7 +14,7 @@ const MovieCarousel = ({ title, movieList }) => {
 				className='px-1/20 md:pt-1/25 md:pb-3/50'
 				slidesPerView={3}
 				slidesPerGroup={3}
-				spaceBetween={5}
+				spaceBetween={8}
 				simulateTouch={false}
 				navigation
 				pagination
@@ -30,13 +30,8 @@ const MovieCarousel = ({ title, movieList }) => {
 					return (
 						<SwiperSlide
 							key={movie.id}
-							className='transition-all duration-200 transform hover:delay-500 hover:z-10 md:hover:scale-150 md:hover:shadow-custom'>
-							<Link to={`/movie/${movie.id}`} tabIndex='-1'>
-								<img
-									src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
-									alt='Movie Poster'
-									className='rounded'></img>
-							</Link>
+							className='transition-all duration-200 transform hover:delay-500 hover:z-10 md:hover:scale-150'>
+							<MovieCard id={movie.id} poster={movie.poster_path} />
 						</SwiperSlide>
 					);
 				})}

@@ -3,15 +3,12 @@ import posterPlaceholder from '../assets/poster-placeholder.png';
 
 const MovieCard = ({ poster, id }) => {
 	return (
-		<div className='z-0 w-1/3 transition duration-100 transform min-w-1/3 md:w-1/8 md:min-w-1/8 md:hover:scale-150 hover:z-10'>
-			<div className='mx-1 my-2'>
-				<Link to={`/movie/${id}`} tabIndex='-1'>
-					<img
-						src={poster ? 'https://image.tmdb.org/t/p/w500' + poster : posterPlaceholder}
-						alt='Movie Poster'></img>
-				</Link>
-			</div>
-		</div>
+		<Link to={`/movie/${id}`} tabIndex='-1'>
+			<img
+				src={poster ? 'https://image.tmdb.org/t/p/w500' + poster : posterPlaceholder}
+				alt='Movie Poster'
+				className='duration-200 rounded md:hover:shadow-custom hover:delay-500'></img>
+		</Link>
 	);
 };
 

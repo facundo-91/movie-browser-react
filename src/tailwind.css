@@ -14,3 +14,11 @@ input:focus-within ~ label,
 input:not(:placeholder-shown) ~ label {
 	@apply transform scale-75 -translate-y-3;
 }
+
+.card-container:nth-child(8n + 1) {
+	@apply origin-left;
+}
+
+.card-container:nth-child(8n) {
+	@apply origin-right;
+}
