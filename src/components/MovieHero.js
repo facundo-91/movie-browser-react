@@ -75,7 +75,7 @@ const MovieHero = ({ id }) => {
 								src='https://icongr.am/material/plus.svg?size=32&color=ffffff'
 								alt='Add to my list icon'></img>
 							{hoverOnButton && !currentUser && (
-								<div className='absolute left-0 z-0 flex items-center justify-center w-48 h-12 mt-24 ml-3 text-sm border rounded border-white-custom bg-black-custom'>
+								<div className='absolute left-0 z-0 flex items-center justify-center w-48 h-12 text-sm border rounded mt-1/25 top-100 border-white-custom bg-black-custom'>
 									<p>Sign in to add the movie to Watchlist</p>
 									<span className='absolute top-0 left-0 w-4 h-4 ml-4 -mt-2 transform rotate-45 border-t border-l -z-1 border-white-custom bg-black-custom'></span>
 								</div>
