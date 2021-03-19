@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import { useFirestore } from '../contexts/FirestoreContext';
 
 const MovieHero = ({ id }) => {
 	// Hooks
+	const { currentUser } = useAuth();
 	const { addMovie, removeMovie, moviesWatchlist } = useFirestore();
 	const [movieInfo, setMovieInfo] = useState([]);
 	const [watchlisted, setWatchlisted] = useState(false);
+	const [hoverOnButton, setHoverOnButton] = useState(false);
 
 	// Effects
 	// Fetch movie info
@@ -63,12 +66,20 @@ const MovieHero = ({ id }) => {
 						</button>
 					) : (
 						<button
-							className='flex items-center justify-center py-2 pl-1 pr-4 text-xs font-bold text-white align-middle bg-opacity-75 rounded lg:pl-4 lg:pr-8 lg:text-base 2xl:text-2xl 2xl:py-3 bg-secundary-button focus:outline-none hover:bg-opacity-50'
-							onClick={() => addMovie(movieInfo.id, movieInfo.poster_path)}>
+							className='relative flex items-center justify-center py-2 pl-1 pr-4 text-xs font-bold text-white align-middle bg-opacity-75 rounded lg:pl-4 lg:pr-8 lg:text-base 2xl:text-2xl 2xl:py-3 bg-secundary-button focus:outline-none hover:bg-opacity-50'
+							onClick={() => (currentUser ? addMovie(movieInfo.id, movieInfo.poster_path) : null)}
+							onMouseEnter={() => setHoverOnButton(true)}
+							onMouseLeave={() => setHoverOnButton(false)}>
 							<img
 								className='w-4 h-4 mx-2 lg:w-6 lg:h-6 2xl:w-8 2xl:h-8'
 								src='https://icongr.am/material/plus.svg?size=32&color=ffffff'
 								alt='Add to my list icon'></img>
+							{hoverOnButton && !currentUser && (
+								<div className='absolute left-0 z-0 flex items-center justify-center w-48 h-12 mt-24 ml-3 text-sm border rounded border-white-custom bg-black-custom'>
+									<p>Sign in to add the movie to Watchlist</p>
+									<span className='absolute top-0 left-0 w-4 h-4 ml-4 -mt-2 transform rotate-45 border-t border-l -z-1 border-white-custom bg-black-custom'></span>
+								</div>
+							)}
 							My list
 						</button>
 					)}
