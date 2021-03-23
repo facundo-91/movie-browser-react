@@ -1,11 +1,7 @@
 module.exports = {
-	future: {},
 	purge: ['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx', 'public/**/*.html'],
 	theme: {
 		extend: {
-			screens: {
-				'2xl': '1536px',
-			},
 			spacing: {
 				9: '2.25rem',
 				11: '2.75rem',
@@ -36,6 +32,9 @@ module.exports = {
 				40: '40%',
 				50: '50%',
 				100: '100%',
+			},
+			transitionProperty: {
+				width: 'width',
 			},
 			transformOrigin: {
 				0: '0%',
@@ -81,11 +80,15 @@ module.exports = {
 		},
 	},
 	variants: {
-		zIndex: ['hover', 'active'],
-		transform: ['hover'],
-		transitionProperty: ['hover'],
-		transitionDelay: ['hover'],
-		extend: {},
+		extend: {
+			padding: ['focus', 'hover'],
+			width: ['focus'],
+			zIndex: ['hover', 'active'],
+			opacity: ['active'],
+			transform: ['hover'],
+			transitionProperty: ['hover'],
+			transitionDelay: ['hover'],
+		},
 	},
 	plugins: [],
 };

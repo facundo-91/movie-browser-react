@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -12,6 +12,7 @@ const Navbar = () => {
 	const { searchInputValue, setSearchInputValue, setSearchResult } = useMovies();
 	const location = useLocation();
 	const history = useHistory();
+	const searchInput = useRef(null);
 	const [showDiv, setShowDiv] = useState(false);
 	const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -19,12 +20,13 @@ const Navbar = () => {
 	// Debounce Search
 	useEffect(() => {
 		const handleSearch = async () => {
-			if (searchInputValue.length > 0) {
-				const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API}&query=${searchInputValue}`;
+			const trimedInput = searchInputValue.trim();
+			if (trimedInput.length > 0) {
+				const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API}&query=${trimedInput}`;
 				const response = await fetch(url);
 				const responseJson = await response.json();
 				setSearchResult(responseJson.results);
-				history.push(`/search/${searchInputValue}`);
+				history.push(`/search/${trimedInput}`);
 			} else {
 				setSearchResult([]);
 				history.push(`/`);
@@ -78,19 +80,17 @@ const Navbar = () => {
 				</Link>
 				<div className='relative flex-grow mx-1 sm:flex-grow-0 sm:mr-auto sm:ml-10 sm:w-64'>
 					<input
-						className='w-full h-8 pl-10 pr-3 text-sm font-light border border-opacity-25 rounded-3xl border-white-custom bg-black-custom text-white-custom focus:outline-none focus:border-opacity-50 hover:border-opacity-50 sm:text-base'
+						className='w-0 h-8 pl-8 text-sm font-light transition-all duration-500 bg-transparent border border-transparent focus:bg-black-custom text-white-custom focus:border-white-custom focus:w-full focus:pr-3 focus:outline-none md:text-base'
 						type='search'
 						onChange={(e) => setSearchInputValue(e.target.value)}
 						value={searchInputValue}
-						placeholder='Enter a movie title'></input>
-					<div className='absolute top-0 left-0 my-2 ml-3'>
-						<svg
-							className='w-4 h-4 fill-current text-white-custom'
-							viewBox='0 0 56.966 56.966'
-							style={{ enableBackground: 'new 0 0 56.966 56.966' }}>
-							<path d='M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z' />
-						</svg>
-					</div>
+						placeholder='Enter a movie title'
+						ref={searchInput}></input>
+					<img
+						className='absolute top-0 left-0 h-8 p-1 cursor-pointer w-9'
+						src='https://icongr.am/material/magnify.svg?size=24&color=ffffff'
+						alt='Search Icon'
+						onClick={() => searchInput.current.focus()}></img>
 				</div>
 				{currentUser ? (
 					<div className='relative z-30'>
