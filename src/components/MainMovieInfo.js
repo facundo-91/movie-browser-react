@@ -76,9 +76,9 @@ const MainMovieInfo = ({ movieData }) => {
 							src='https://icongr.am/fontawesome/bookmark-o.svg?size=64&color=ffffff'
 							alt='Add to Watchlist Icon'></img>
 						{hoverOnButton && !currentUser && (
-							<div className='absolute right-0 flex items-center justify-center w-48 h-12 mt-5 text-sm border rounded border-white-custom bg-black-custom'>
+							<div className='absolute right-0 z-0 flex items-center justify-center w-48 h-12 mt-5 text-sm border rounded border-white-custom bg-black-custom'>
 								<p>Sign in to add the movie to Watchlist</p>
-								<span className='absolute top-0 right-0 w-4 h-4 mr-4 -mt-2 transform rotate-45 border-t border-l border-white-custom bg-black-custom'></span>
+								<span className='absolute top-0 right-0 w-4 h-4 mr-4 -mt-2 transform rotate-45 border-t border-l -z-1 border-white-custom bg-black-custom'></span>
 							</div>
 						)}
 					</button>
