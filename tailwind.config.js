@@ -66,6 +66,7 @@ module.exports = {
 				custom: '20px 0px 16px 2px rgb(0 0 0 / 75%), -20px 0px 16px 2px rgb(0 0 0 / 75%)',
 			},
 			minWidth: {
+				8: '2rem',
 				'1/3': '33.333333%',
 				'1/6': '16.67%',
 				'1/7': '14.285714%',
@@ -81,6 +82,7 @@ module.exports = {
 	},
 	variants: {
 		extend: {
+			cursor: ['focus'],
 			padding: ['focus', 'hover'],
 			width: ['focus'],
 			zIndex: ['hover', 'active'],

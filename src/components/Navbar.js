@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useMovies } from '../contexts/MoviesContext';
-import defaultProfileImg from '../assets/user-profile.png';
 import appLogo from '../assets/logo.png';
 
 const Navbar = () => {
@@ -12,7 +11,6 @@ const Navbar = () => {
 	const { searchInputValue, setSearchInputValue, setSearchResult } = useMovies();
 	const location = useLocation();
 	const history = useHistory();
-	const searchInput = useRef(null);
 	const [showDiv, setShowDiv] = useState(false);
 	const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -71,69 +69,72 @@ const Navbar = () => {
 	return (
 		<nav
 			className={
-				'flex items-center h-16 w-full fixed z-30 transition duration-700 ease-out ' +
-				(scrollPosition > 0 ? 'bg-gray-custom bg-opacity-100' : 'bg-gray-custom bg-opacity-10')
+				'flex items-center h-16 w-full fixed z-30 transition-colors duration-500 bg-gray-custom ' +
+				(scrollPosition > 30 ? 'bg-opacity-100' : 'bg-opacity-10')
 			}>
-			<div className='flex items-center w-full mx-2 sm:mx-10'>
+			<div className='flex items-center justify-between w-full mx-1/20'>
 				<Link to='/' className='flex-shrink-0 w-8 h-8'>
 					<img className='w-auto h-auto' src={appLogo} alt='App logo'></img>
 				</Link>
-				<div className='relative flex-grow mx-1 sm:flex-grow-0 sm:mr-auto sm:ml-10 sm:w-64'>
+				<div className='flex items-center justify-end'>
 					<input
-						className='w-0 h-8 pl-8 text-sm font-light transition-all duration-500 bg-transparent border border-transparent focus:bg-black-custom text-white-custom focus:border-white-custom focus:w-full focus:pr-3 focus:outline-none md:text-base'
+						className='w-8 h-8 mx-2 text-sm font-light placeholder-transparent transition-all duration-700 bg-transparent border border-transparent cursor-pointer focus:placeholder-gray-input-text focus:cursor-text focus:pr-3 focus:pl-8 focus:w-full focus:bg-black-custom focus:border-white-custom focus:outline-none md:text-base'
 						type='search'
 						onChange={(e) => setSearchInputValue(e.target.value)}
 						value={searchInputValue}
 						placeholder='Enter a movie title'
-						ref={searchInput}></input>
-					<img
-						className='absolute top-0 left-0 h-8 p-1 cursor-pointer w-9'
-						src='https://icongr.am/material/magnify.svg?size=24&color=ffffff'
-						alt='Search Icon'
-						onClick={() => searchInput.current.focus()}></img>
-				</div>
-				{currentUser ? (
-					<div className='relative z-30'>
-						<button
-							className='relative z-20 block w-10 h-10 overflow-hidden border-2 border-transparent rounded-full focus:outline-none focus:border-white-custom focus:border-opacity-50 hover:border-white-custom'
-							onClick={() => setShowDiv(!showDiv)}>
-							<img
-								className='object-cover w-full h-full'
-								src={currentUser.photoURL != null ? currentUser.photoURL : defaultProfileImg}
-								alt='Profile'></img>
-						</button>
-						<button
-							className='fixed inset-0 w-full h-full bg-black opacity-25 cursor-default'
-							style={{ display: showDiv ? 'block' : 'none' }}
-							onClick={() => setShowDiv(false)}
-							tabIndex='-1'></button>
-						<div
-							className='fixed py-2 mt-2 rounded-md shadow-md right-5 sm:right-0 w-9/10 sm:absolute sm:w-48 bg-gray-custom'
-							style={{ display: showDiv ? 'block' : 'none' }}>
-							<Link
-								to='/profile'
-								className='block px-4 py-2 text-white-custom hover:bg-white-custom hover:bg-opacity-25'>
-								Profile
-							</Link>
-							<Link
-								to='/watchlist'
-								className='block px-4 py-2 text-white-custom hover:bg-white-custom hover:bg-opacity-25'>
-								Watchlist
-							</Link>
+						style={{
+							backgroundImage: 'url(https://icongr.am/material/magnify.svg?size=24&color=ffffff)',
+							backgroundRepeat: 'no-repeat',
+							backgroundPosition: '3px 3px',
+						}}></input>
+					{currentUser ? (
+						<div className='relative z-30'>
 							<button
-								className='w-full px-4 py-2 text-left text-white-custom hover:bg-white-custom hover:bg-opacity-25'
-								onClick={signOut}>
-								Sign Out
+								className='relative z-20 block w-10 h-10 overflow-hidden border-2 border-transparent rounded-full focus:outline-none focus:border-white-custom focus:border-opacity-50 hover:border-white-custom'
+								onClick={() => setShowDiv(!showDiv)}>
+								<img
+									className='object-cover w-full h-full'
+									src={
+										currentUser.photoURL != null
+											? currentUser.photoURL
+											: 'https://icongr.am/material/account-circle.svg?size=36&color=ffffff'
+									}
+									alt='Profile'></img>
 							</button>
+							<button
+								className='fixed inset-0 w-full h-full bg-black opacity-25 cursor-default'
+								style={{ display: showDiv ? 'block' : 'none' }}
+								onClick={() => setShowDiv(false)}
+								tabIndex='-1'></button>
+							<div
+								className='fixed py-2 mt-2 rounded-md shadow-md right-5 sm:right-0 w-9/10 sm:absolute sm:w-48 bg-gray-custom'
+								style={{ display: showDiv ? 'block' : 'none' }}>
+								<Link
+									to='/profile'
+									className='block px-4 py-2 text-white-custom hover:bg-white-custom hover:bg-opacity-25'>
+									Profile
+								</Link>
+								<Link
+									to='/watchlist'
+									className='block px-4 py-2 text-white-custom hover:bg-white-custom hover:bg-opacity-25'>
+									Watchlist
+								</Link>
+								<button
+									className='w-full px-4 py-2 text-left text-white-custom hover:bg-white-custom hover:bg-opacity-25'
+									onClick={signOut}>
+									Sign Out
+								</button>
+							</div>
 						</div>
-					</div>
-				) : (
-					<Link
-						to='/signin'
-						className='flex items-center justify-center flex-shrink-0 w-20 h-8 mx-1 text-sm font-medium rounded-sm bg-red-custom text-white-custom sm:text-base'>
-						Sign In
-					</Link>
-				)}
+					) : (
+						<Link
+							to='/signin'
+							className='flex items-center justify-center flex-shrink-0 w-20 h-8 mx-1 text-sm font-medium rounded-sm bg-red-custom text-white-custom sm:text-base'>
+							Sign In
+						</Link>
+					)}
+				</div>
 			</div>
 		</nav>
 	);
