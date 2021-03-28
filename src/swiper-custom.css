@@ -15,9 +15,15 @@
 .swiper-button-next {
 	background: rgba(20, 20, 20, 0.5);
 	width: calc(5% - 8px);
-	height: calc(62.77% - 1.082rem);
+	height: calc(72% - 1rem);
 	top: 0;
 	margin: calc(4% + 24px) 0 0;
+}
+@media (min-width: 1280px) {
+	.swiper-button-prev,
+	.swiper-button-next {
+		height: calc(62.77% - 1.082rem);
+	}
 }
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
@@ -39,21 +45,21 @@
 .swiper-button-next:after {
 	transition: font-size 0.2s;
 }
-.swiper-slide:first-child,
-.swiper-slide:nth-child(9),
-.swiper-slide:nth-child(17),
-.swiper-slide:nth-child(25),
-.swiper-slide:nth-child(33) {
+.swiper-slide:nth-child(5n + 1) {
 	transform-origin: left;
 }
-.swiper-slide:nth-child(8),
-.swiper-slide:nth-child(16),
-.swiper-slide:nth-child(24),
-.swiper-slide:nth-child(32),
-.swiper-slide:last-child {
+.swiper-slide:nth-child(5n) {
 	transform-origin: right;
 }
-@media (max-width: 768px) {
+@media (min-width: 1280px) {
+	.swiper-slide:nth-child(8n + 1) {
+		transform-origin: left;
+	}
+	.swiper-slide:nth-child(8n) {
+		transform-origin: right;
+	}
+}
+@media (max-width: 767px) {
 	.swiper-button-prev,
 	.swiper-button-next,
 	.swiper-pagination {
