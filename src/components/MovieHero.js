@@ -35,7 +35,7 @@ const MovieHero = ({ id }) => {
 			style={{
 				backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0) 100%), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
 			}}>
-			<div className='absolute top-0 flex flex-col justify-end w-1/2 mx-10 bottom-40'>
+			<div className='absolute top-0 flex flex-col justify-end w-1/2 mx-1/20 bottom-40'>
 				<h1 className='mb-1/20 text-3.5vw font-bold'>{movieInfo.title}</h1>
 				<div className='mb-1/20'>
 					<p
