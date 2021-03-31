@@ -78,7 +78,7 @@ const Navbar = () => {
 				</Link>
 				<div className='flex items-center justify-end'>
 					<input
-						className='w-8 h-8 mx-2 text-sm font-light placeholder-transparent transition-all duration-700 bg-transparent border border-transparent cursor-pointer focus:placeholder-gray-input-text focus:cursor-text focus:pr-3 focus:pl-8 focus:w-full focus:bg-black-custom focus:border-white-custom focus:outline-none md:text-base'
+						className='w-8 h-8 pl-8 mx-2 text-sm font-light placeholder-transparent transition-all duration-700 bg-transparent border border-transparent cursor-pointer focus:placeholder-gray-input-text focus:cursor-text focus:pr-3 focus:w-full focus:bg-black-custom focus:border-white-custom focus:outline-none md:text-base'
 						type='search'
 						onChange={(e) => setSearchInputValue(e.target.value)}
 						value={searchInputValue}
