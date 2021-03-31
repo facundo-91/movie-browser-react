@@ -2,6 +2,9 @@ module.exports = {
 	purge: ['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx', 'public/**/*.html'],
 	theme: {
 		extend: {
+			screens: {
+				'3xl': '2160px',
+			},
 			spacing: {
 				9: '2.25rem',
 				11: '2.75rem',
@@ -10,6 +13,7 @@ module.exports = {
 				84: '21rem',
 				96: '24rem',
 				120: '30rem',
+				'1/33': '3%',
 				'1/25': '4%',
 				'1/20': '5%',
 				'3/50': '6%',

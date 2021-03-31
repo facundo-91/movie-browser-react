@@ -7,7 +7,7 @@ const MovieCarousel = ({ title, movieList }) => {
 
 	return (
 		<div className='mb-6 md:mb-0'>
-			<div className='mb-1 ml-1/20 md:-mb-1/20'>
+			<div className='mb-1 ml-1/20 md:-mb-1/20 2xl:-mb-1/25 3xl:-mb-1/33'>
 				<h3 className='ml-px text-lg font-bold md:text-1.5vw'>{title}</h3>
 			</div>
 			<Swiper
@@ -26,6 +26,10 @@ const MovieCarousel = ({ title, movieList }) => {
 						slidesPerGroup: 5,
 					},
 					1280: {
+						slidesPerView: 7,
+						slidesPerGroup: 7,
+					},
+					1600: {
 						slidesPerView: 8,
 						slidesPerGroup: 8,
 					},
@@ -34,7 +38,7 @@ const MovieCarousel = ({ title, movieList }) => {
 					return (
 						<SwiperSlide
 							key={movie.id}
-							className='transition-all duration-200 transform hover:delay-500 hover:z-10 md:hover:scale-125 xl:hover:scale-150'>
+							className='transition-all duration-200 transform hover:delay-500 hover:z-10 md:hover:scale-125 xl:hover:scale-125'>
 							<MovieCard id={movie.id} poster={movie.poster_path} />
 						</SwiperSlide>
 					);
