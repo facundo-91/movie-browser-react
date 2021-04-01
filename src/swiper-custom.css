@@ -15,20 +15,20 @@
 .swiper-button-next {
 	background: rgba(20, 20, 20, 0.5);
 	width: calc(5% - 8px);
-	height: calc(72.4% - 1.082rem);
+	height: calc(69.21% - 1.22rem);
 	top: 0;
 	margin: calc(4% + 24px) 0 0;
 }
 @media (min-width: 1280px) {
 	.swiper-button-prev,
 	.swiper-button-next {
-		height: calc(65.44% - 1.082rem);
+		height: calc(65.8% - 1.19rem);
 	}
 }
 @media (min-width: 1600px) {
 	.swiper-button-prev,
 	.swiper-button-next {
-		height: calc(62.77% - 1.082rem);
+		height: calc(62.78% - 1.18rem);
 	}
 }
 .swiper-button-prev:hover,

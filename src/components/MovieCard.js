@@ -7,7 +7,7 @@ const MovieCard = ({ poster, id }) => {
 			<img
 				src={poster ? 'https://image.tmdb.org/t/p/w500' + poster : posterPlaceholder}
 				alt='Movie Poster'
-				className='duration-200 rounded md:hover:shadow-custom hover:delay-500'></img>
+				className='duration-200 rounded md:hover:shadow-custom hover:delay-200'></img>
 		</Link>
 	);
 };

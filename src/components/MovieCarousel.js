@@ -22,8 +22,8 @@ const MovieCarousel = ({ title, movieList }) => {
 				observer
 				breakpoints={{
 					768: {
-						slidesPerView: 5,
-						slidesPerGroup: 5,
+						slidesPerView: 6,
+						slidesPerGroup: 6,
 					},
 					1280: {
 						slidesPerView: 7,
@@ -38,7 +38,7 @@ const MovieCarousel = ({ title, movieList }) => {
 					return (
 						<SwiperSlide
 							key={movie.id}
-							className='transition-all duration-200 transform hover:delay-500 hover:z-10 md:hover:scale-125 xl:hover:scale-125'>
+							className='transition-transform duration-200 transform hover:delay-200 hover:z-10 md:hover:scale-125'>
 							<MovieCard id={movie.id} poster={movie.poster_path} />
 						</SwiperSlide>
 					);
