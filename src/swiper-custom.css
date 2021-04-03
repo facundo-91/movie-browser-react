@@ -52,10 +52,10 @@
 	transition: font-size 0.2s;
 }
 @media (max-width: 1279px) {
-	.swiper-slide:nth-child(5n + 1) {
+	.swiper-slide:nth-child(6n + 1) {
 		transform-origin: left;
 	}
-	.swiper-slide:nth-child(5n) {
+	.swiper-slide:nth-child(6n) {
 		transform-origin: right;
 	}
 }

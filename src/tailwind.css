@@ -14,3 +14,37 @@ input:focus-within ~ label,
 input:not(:placeholder-shown) ~ label {
 	@apply transform scale-75 -translate-y-3;
 }
+
+@media (max-width: 1279px) {
+	.card-container:nth-child(6n + 1) {
+		@apply origin-left;
+	}
+	.card-container:nth-child(6n) {
+		@apply origin-right;
+	}
+}
+@media (min-width: 1280px) and (max-width: 1599px) {
+	.card-container:nth-child(7n + 1) {
+		@apply origin-left;
+	}
+	.card-container:nth-child(7n) {
+		@apply origin-right;
+	}
+}
+@media (min-width: 1600px) {
+	.card-container:nth-child(8n + 1) {
+		@apply origin-left;
+	}
+	.card-container:nth-child(8n) {
+		@apply origin-right;
+	}
+}
+
+@media (min-width: 768px) {
+	.card-container-small:nth-child(6n + 1) {
+		@apply origin-left;
+	}
+	.card-container-small:nth-child(6n) {
+		@apply origin-right;
+	}
+}

@@ -13,7 +13,7 @@ const SearchResult = () => {
 			<div className='flex flex-wrap'>
 				{searchResult.map((movie) => {
 					return (
-						<div className='z-0 w-1/3 px-1 pb-2 transition duration-200 transform card-container min-w-1/3 md:w-1/8 md:min-w-1/8 hover:z-10 md:hover:scale-150 hover:delay-500'>
+						<div className='z-0 w-1/3 px-1 pb-2 transition duration-200 transform card-container min-w-1/3 md:w-1/6 md:min-w-1/6 xl:w-1/7 xl:min-w-1/7 2xl:w-1/8 2xl:min-w-1/8 hover:z-10 md:hover:scale-125 hover:delay-200'>
 							<MovieCard key={movie.id} id={movie.id} poster={movie.poster_path} />
 						</div>
 					);
