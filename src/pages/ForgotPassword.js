@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import appLogo from '../assets/logo.png';
-import background from '../assets/login-bg.jpg';
+import background from '../assets/login-bg.png';
 
 const ForgotPassword = () => {
 	// Hooks
@@ -31,10 +31,10 @@ const ForgotPassword = () => {
 
 	return (
 		<div
-			className='pb-8 bg-cover'
+			className='min-h-screen pb-20 bg-cover'
 			style={{
-				background: window.matchMedia('(max-width: 768px)').matches
-					? 'none'
+				background: window.matchMedia('(max-width: 767px)').matches
+					? '#030303'
 					: `linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(${background})`,
 			}}>
 			<div className='flex w-full'>
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
 					<img className='w-auto h-auto' src={appLogo} alt='App logo'></img>
 				</Link>
 			</div>
-			<div className='px-5 py-4 md:bg-opacity-75 md:max-w-md md:mx-auto md:bg-black-custom md:px-16 md:py-16 md:mb-12 md:min-h-screen'>
+			<div className='px-5 py-4 md:bg-opacity-75 md:max-w-md md:mx-auto md:bg-black-custom md:px-16 md:py-20'>
 				<h1 className='mb-4 text-3xl font-bold'>Password Reset</h1>
 				{error && (
 					<p className='px-5 py-2 mt-6 mb-4 text-sm font-bold rounded bg-orange-error'>{error}</p>
