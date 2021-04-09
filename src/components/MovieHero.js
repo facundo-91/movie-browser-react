@@ -15,10 +15,12 @@ const MovieHero = ({ id }) => {
 	// Fetch movie info
 	useEffect(() => {
 		const getMovieInfo = async () => {
-			const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API}`;
-			const response = await fetch(url);
-			const responseJson = await response.json();
-			setMovieInfo(responseJson);
+			if (id != null) {
+				const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API}`;
+				const response = await fetch(url);
+				const responseJson = await response.json();
+				setMovieInfo(responseJson);
+			}
 		};
 		getMovieInfo();
 	}, [id]);
@@ -29,7 +31,7 @@ const MovieHero = ({ id }) => {
 		setWatchlisted(watchlistState);
 	}, [moviesWatchlist, id]);
 
-	return (
+	return movieInfo.backdrop_path !== undefined ? (
 		<header
 			className='relative hidden w-full bg-top bg-no-repeat bg-cover h-screen-vw md:block'
 			style={{
@@ -94,7 +96,7 @@ const MovieHero = ({ id }) => {
 				}}
 				className='absolute left-0 right-0 top-auto w-full bg-transparent'></div>
 		</header>
-	);
+	) : null;
 };
 
 export default MovieHero;

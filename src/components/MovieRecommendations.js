@@ -8,8 +8,10 @@ const MovieRecommendations = ({ movieData }) => {
 				<div className='flex flex-wrap my-4'>
 					{movieData.recommendations.results.map((movie) => {
 						return (
-							<div className='z-0 w-1/3 px-1 pb-2 transition duration-200 transform card-container-small min-w-1/3 md:w-1/6 md:min-w-1/6 hover:z-10 md:hover:scale-125 hover:delay-200'>
-								<MovieCard key={movie.id} id={movie.id} poster={movie.poster_path} />
+							<div
+								key={movie.id}
+								className='z-0 w-1/3 px-1 pb-2 transition duration-200 transform card-container-small min-w-1/3 md:w-1/6 md:min-w-1/6 hover:z-10 md:hover:scale-125 hover:delay-200'>
+								<MovieCard id={movie.id} poster={movie.poster_path} />
 							</div>
 						);
 					})}

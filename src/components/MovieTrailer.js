@@ -22,9 +22,9 @@ const MovieTrailer = ({ movieData }) => {
 					height='315'
 					className='absolute inset-0 w-full h-full my-6'
 					src={`https://www.youtube-nocookie.com/embed/${trailerData[0].key}`}
-					frameborder='0'
+					frameBorder='0'
 					allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-					allowfullscreen
+					allowFullScreen
 					title='Movie Trailer'></iframe>
 			</div>
 			<hr className='w-full h-24 border-b-2 border-gray-input-text'></hr>
