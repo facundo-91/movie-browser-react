@@ -24,10 +24,10 @@ const Navbar = () => {
 				const response = await fetch(url);
 				const responseJson = await response.json();
 				setSearchResult(responseJson.results);
-				history.push(`/search/${trimedInput}`);
+				history.replace(`/search/${trimedInput}`);
 			} else {
 				setSearchResult([]);
-				history.push(`/`);
+				history.replace(`/`);
 			}
 		};
 		const timeOutId = setTimeout(() => handleSearch(), 500);
