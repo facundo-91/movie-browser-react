@@ -5,7 +5,9 @@ import { useAuth } from '../contexts/AuthContext';
 const UpdateEmail = () => {
 	// Hooks
 	const emailRef = useRef();
-	const { currentUser, updateEmail } = useAuth();
+	const emailConfirmRef = useRef();
+	const currentPasswordRef = useRef();
+	const { currentUser, updateEmail, reAuth } = useAuth();
 	const history = useHistory();
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -16,15 +18,22 @@ const UpdateEmail = () => {
 		try {
 			setError('');
 			setLoading(true);
-			if (emailRef.current.value !== currentUser.email) {
-				await updateEmail(emailRef.current.value);
-				history.push('/profile');
-			} else {
-				setError('Your new email is the same');
+			if (emailRef.current.value !== emailConfirmRef.current.value) {
+				setError('Emails do not match');
 				setLoading(false);
+			} else {
+				if (emailRef.current.value !== currentUser.email) {
+					let credentials = reAuth(currentUser.email, currentPasswordRef.current.value);
+					await currentUser.reauthenticateWithCredential(credentials);
+					await updateEmail(emailRef.current.value);
+					history.push('/profile');
+				} else {
+					setError('Your new email is the same');
+					setLoading(false);
+				}
 			}
-		} catch {
-			setError('Failed to update email');
+		} catch (err) {
+			setError(err.message);
 			setLoading(false);
 		}
 	};
@@ -44,12 +53,34 @@ const UpdateEmail = () => {
 							<span className='float-right md:ml-2 md:float-none'>{currentUser.email}</span>
 						</p>
 						<div className='my-4'>
-							<label className='font-bold'>New Email:</label>
-							<input
-								className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
-								id=''
-								type='email'
-								ref={emailRef}></input>
+							<label className='font-bold'>
+								New Email:
+								<input
+									className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
+									type='email'
+									required
+									ref={emailRef}></input>
+							</label>
+						</div>
+						<div className='my-4'>
+							<label className='font-bold'>
+								Confirm New Email:
+								<input
+									className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
+									type='email'
+									required
+									ref={emailConfirmRef}></input>
+							</label>
+						</div>
+						<div className='my-4'>
+							<label className='font-bold'>
+								Password:
+								<input
+									className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
+									type='password'
+									required
+									ref={currentPasswordRef}></input>
+							</label>
 						</div>
 						<hr className='my-2 border-gray-input-text'></hr>
 						<div className='flex flex-col my-2 md:flex-row md:gap-x-2'>

@@ -23,8 +23,8 @@ const ForgotPassword = () => {
 			setMessage(
 				`An email with instructions on how to reset your password has been sent to ${emailRef.current.value}. Check your spam or junk folder if you don’t see the email in your inbox.`
 			);
-		} catch {
-			setError('Failed to reset password');
+		} catch (err) {
+			setError(err.message);
 			setLoading(false);
 		}
 	};

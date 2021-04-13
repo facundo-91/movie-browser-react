@@ -47,6 +47,7 @@ const UpdateUser = () => {
 								className='w-full h-12 px-5 pt-0 my-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
 								id=''
 								type='text'
+								required
 								ref={userRef}></input>
 						</div>
 						<hr className='my-2 border-gray-input-text'></hr>

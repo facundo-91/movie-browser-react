@@ -20,9 +20,10 @@ const SignIn = () => {
 			setError('');
 			setLoading(true);
 			await signInEmail(emailRef.current.value, passwordRef.current.value);
+			setLoading(false);
 			history.push('/');
-		} catch {
-			setError('Failed to Sign In');
+		} catch (err) {
+			setError(err.message);
 			setLoading(false);
 		}
 	};
@@ -31,9 +32,10 @@ const SignIn = () => {
 			setError('');
 			setLoading(true);
 			await signInGoogle();
+			setLoading(false);
 			history.push('/');
-		} catch {
-			setError('Failed to Sign In');
+		} catch (err) {
+			setError(err.message);
 			setLoading(false);
 		}
 	};

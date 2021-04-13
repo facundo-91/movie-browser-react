@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import { auth, providers } from '../firebase';
+import { auth, providers, firebase } from '../firebase';
 
 // Context
 const AuthContext = createContext(null);
@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
 	const updatePassword = (password) => currentUser.updatePassword(password);
 	const updateUser = (username) => currentUser.updateProfile({ displayName: username });
 	const deleteUser = () => currentUser.delete();
+	const reAuth = (email, password) => firebase.auth.EmailAuthProvider.credential(email, password);
 
 	// Subscribe to user on mount
 	useEffect(() => {
@@ -48,6 +49,7 @@ const AuthProvider = ({ children }) => {
 		updatePassword,
 		updateUser,
 		deleteUser,
+		reAuth,
 	};
 
 	return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;

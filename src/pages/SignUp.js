@@ -9,26 +9,27 @@ const SignUp = () => {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
-	const [error, setError] = useState('');
-	const [loading, setLoading] = useState(false);
 	const { signUpEmail } = useAuth();
 	const history = useHistory();
+	const [error, setError] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	// Methods
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-			setLoading(false);
-			return setError('Passwords do not match');
-		}
 		try {
 			setError('');
 			setLoading(true);
-			await signUpEmail(emailRef.current.value, passwordRef.current.value);
-			setLoading(false);
-			history.push('/');
-		} catch {
-			setError('Failed to create account');
+			if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+				setLoading(false);
+				setError('Passwords do not match');
+			} else {
+				await signUpEmail(emailRef.current.value, passwordRef.current.value);
+				setLoading(false);
+				history.push('/');
+			}
+		} catch (err) {
+			setError(err.message);
 			setLoading(false);
 		}
 	};

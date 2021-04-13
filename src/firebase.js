@@ -19,4 +19,4 @@ const providers = {
 };
 
 export default firebaseConfig;
-export { auth, database, providers };
+export { auth, database, providers, firebase };

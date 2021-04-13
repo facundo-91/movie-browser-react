@@ -5,7 +5,9 @@ import { useAuth } from '../contexts/AuthContext';
 const UpdatePassword = () => {
 	// Hooks
 	const passwordRef = useRef();
-	const { updatePassword } = useAuth();
+	const passwordConfirmRef = useRef();
+	const currentPasswordRef = useRef();
+	const { updatePassword, currentUser, reAuth } = useAuth();
 	const history = useHistory();
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -16,11 +18,18 @@ const UpdatePassword = () => {
 		try {
 			setError('');
 			setLoading(true);
-			await updatePassword(passwordRef.current.value);
-			setLoading(false);
-			history.push('/profile');
-		} catch {
-			setError('Failed to update password');
+			if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+				setError('Passwords do not match');
+				setLoading(false);
+			} else {
+				let credentials = reAuth(currentUser.email, currentPasswordRef.current.value);
+				await currentUser.reauthenticateWithCredential(credentials);
+				await updatePassword(passwordRef.current.value);
+				setLoading(false);
+				history.push('/profile');
+			}
+		} catch (err) {
+			setError(err.message);
 			setLoading(false);
 		}
 	};
@@ -36,12 +45,31 @@ const UpdatePassword = () => {
 					)}
 					<form className='mt-2' onSubmit={handleSubmit}>
 						<div className='my-4'>
-							<label className='font-bold'>New Password:</label>
-							<input
-								className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
-								id=''
-								type='password'
-								ref={passwordRef}></input>
+							<label className='font-bold'>
+								Current Password:
+								<input
+									className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
+									type='password'
+									ref={currentPasswordRef}></input>
+							</label>
+						</div>
+						<div className='my-4'>
+							<label className='font-bold'>
+								New Password:
+								<input
+									className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
+									type='password'
+									ref={passwordRef}></input>
+							</label>
+						</div>
+						<div className='my-4'>
+							<label className='font-bold'>
+								Confirm New Password:
+								<input
+									className='w-full h-12 px-5 pt-0 mt-2 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
+									type='password'
+									ref={passwordConfirmRef}></input>
+							</label>
 						</div>
 						<hr className='my-2 border-gray-input-text'></hr>
 						<div className='flex flex-col my-2 md:flex-row md:gap-x-2'>
