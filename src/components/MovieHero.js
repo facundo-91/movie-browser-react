@@ -31,12 +31,16 @@ const MovieHero = ({ id }) => {
 		setWatchlisted(watchlistState);
 	}, [moviesWatchlist, id]);
 
-	return movieInfo.backdrop_path !== undefined ? (
+	return (
 		<header
 			className='relative hidden w-full bg-top bg-no-repeat bg-cover h-screen-vw md:block'
-			style={{
-				backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0) 100%), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
-			}}>
+			style={
+				movieInfo.backdrop_path !== undefined
+					? {
+							backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0) 100%), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
+					  }
+					: {}
+			}>
 			<div className='absolute top-0 flex flex-col justify-end w-1/2 mx-1/20 bottom-40'>
 				<h1 className='mb-1/20 text-3.5vw font-bold'>{movieInfo.title}</h1>
 				<div className='mb-1/20'>
@@ -96,7 +100,7 @@ const MovieHero = ({ id }) => {
 				}}
 				className='absolute left-0 right-0 top-auto w-full bg-transparent'></div>
 		</header>
-	) : null;
+	);
 };
 
 export default MovieHero;
