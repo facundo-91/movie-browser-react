@@ -33,7 +33,7 @@ const MovieHero = ({ id }) => {
 
 	return (
 		<header
-			className='relative hidden w-full bg-top bg-no-repeat bg-cover h-screen-vw md:block'
+			className='relative items-center hidden w-full bg-top bg-no-repeat bg-cover h-screen-vw md:flex'
 			style={
 				movieInfo.backdrop_path !== undefined
 					? {
@@ -41,8 +41,8 @@ const MovieHero = ({ id }) => {
 					  }
 					: {}
 			}>
-			<div className='absolute top-0 flex flex-col justify-end w-1/2 mx-1/20 bottom-40'>
-				<h1 className='mb-1/20 text-3.5vw font-bold'>{movieInfo.title}</h1>
+			<div className='flex flex-col w-1/2 ml-1/20 mb-1/8'>
+				<h1 className='text-3.5vw leading-none font-bold mb-1/20'>{movieInfo.title}</h1>
 				<div className='mb-1/20'>
 					<p
 						style={{ textShadow: '2px 2px 4px rgb(0 0 0 / 45%)' }}
