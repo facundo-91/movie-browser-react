@@ -65,7 +65,7 @@ const Dashboard = () => {
 	return (
 		<>
 			<MovieHero id={movieHeroID} />
-			<div className='relative pt-20 pb-2 md:pt-0 md:-mt-1/8'>
+			<div className='relative pt-0 pb-2 md:-mt-1/8'>
 				<MovieCarousel title='Popular Today' movieList={popularList} />
 				<MovieCarousel title='Now Playing' movieList={nowPlayingList} />
 				<MovieCarousel title='Upcoming Movies' movieList={upcomingList} />

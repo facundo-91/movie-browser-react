@@ -23,12 +23,14 @@ module.exports = {
 				'1/7': '14.285714%',
 				'1/6': '16.666667%',
 				'1/4': '25%',
+				'1/22': '45%',
 				'9/16': '56.25%',
 				'3/4': '75%',
 				'9/10': '90%',
 				'screen-20': '20vh',
 				'screen-80': '80vh',
 				'screen-vw': '56.25vw',
+				'screen-vw-120': '120vw',
 			},
 			inset: {
 				'-4': '-1rem',
@@ -49,7 +51,7 @@ module.exports = {
 				sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
 			},
 			fontSize: {
-				'1.5vw': '1.5vw',
+				'1.3vw': '1.3vw',
 				'3.5vw': '3.5vw',
 			},
 			colors: {
