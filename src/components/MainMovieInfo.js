@@ -189,21 +189,19 @@ const MainMovieInfo = ({ movieData }) => {
 					</div>
 				</div>
 				<div className='flex justify-between max-w-xs my-4 align-middle lg:max-w-md'>
-					<div className='flex align-middle'>
+					<div className='flex items-center'>
 						<img
 							className='w-4 mr-1 lg:w-6 lg:mr-2'
 							src='https://icongr.am/material/clock-outline.svg?size=32&color=ffffff'
 							alt='Clock Icon'></img>
-						<p className='text-sm md:text-base md:leading-8 md:tracking-tight lg:text-lg'>
-							{runtime}
-						</p>
+						<p className='mt-px text-sm tracking-tight md:text-base lg:text-lg'>{runtime}</p>
 					</div>
-					<div className='flex align-middle '>
+					<div className='flex items-center'>
 						<img
 							className='w-4 mr-1 lg:w-6 lg:mr-2'
 							src='https://icongr.am/material/calendar-month-outline.svg?size=32&color=ffffff'
 							alt='Calendar Icon'></img>
-						<p className='text-sm md:text-base md:leading-8 md:tracking-tight lg:text-lg'>
+						<p className='mt-px text-sm tracking-tight md:text-base lg:text-lg'>
 							{movieData.release_date.split('-').reverse().join('-')}
 						</p>
 					</div>
