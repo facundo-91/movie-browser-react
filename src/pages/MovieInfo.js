@@ -34,7 +34,7 @@ const MovieInfo = ({ match }) => {
 				style={{
 					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
 				}}>
-				<div className='w-full max-w-lg py-20 mx-auto md:max-w-6xl'>
+				<div className='w-full py-20 mx-auto px-1/20'>
 					<MainMovieInfo movieData={movieInfo} />
 					<ActorsInfo movieData={movieInfo} />
 					<MovieTrailer movieData={movieInfo} />

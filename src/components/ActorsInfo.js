@@ -19,7 +19,7 @@ const ActorsInfo = ({ movieData }) => {
 	}, [movieData]);
 
 	return (
-		<div className='px-3 py-6 mx-4 bg-gray-custom xl:mx-0'>
+		<div className='max-w-screen-lg px-3 py-6 mx-auto bg-gray-custom'>
 			<h1 className='mx-1 text-xl font-bold md:text-2xl'>Crew</h1>
 			<div className='flex flex-wrap justify-start'>
 				{crewInfo.map((person) => {

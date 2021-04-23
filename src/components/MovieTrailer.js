@@ -14,7 +14,7 @@ const MovieTrailer = ({ movieData }) => {
 	}, [movieData]);
 
 	return movieData.videos.results.length !== 0 && trailerData[0] ? (
-		<div className='px-3 py-6 mx-4 bg-gray-custom xl:mx-0'>
+		<div className='max-w-screen-lg px-3 py-6 mx-auto bg-gray-custom'>
 			<h1 className='mx-1 text-xl font-bold md:text-2xl'>Trailer</h1>
 			<div className='relative h-0 pb-9/16'>
 				<iframe

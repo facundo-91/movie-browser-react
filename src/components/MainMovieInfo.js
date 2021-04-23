@@ -52,8 +52,8 @@ const MainMovieInfo = ({ movieData }) => {
 	}, [movieData]);
 
 	return (
-		<div className='flex flex-col mx-4 bg-opacity-50 bg-black-custom md:flex-row xl:mx-0'>
-			<div className='relative w-full max-w-lg md:max-w-xs lg:max-w-sm'>
+		<div className='flex flex-col max-w-screen-lg mx-auto bg-opacity-50 bg-black-custom md:flex-row'>
+			<div className='relative w-full'>
 				<img
 					className='w-full h-auto'
 					src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
@@ -89,7 +89,7 @@ const MainMovieInfo = ({ movieData }) => {
 				)}
 			</div>
 			<div className='w-full px-4 py-4 lg:px-6 lg:py-6 xl:px-8 xl:py-8'>
-				<p className='text-2xl font-bold tracking-tight lg:text-4xl'>
+				<p className='text-2xl font-bold tracking-tight lg:text-3xl'>
 					{movieData.title}
 					<span className='font-normal'> ({movieData.release_date.slice(0, 4)})</span>
 				</p>
