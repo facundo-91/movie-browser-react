@@ -43,6 +43,7 @@ module.exports = {
 			},
 			transitionProperty: {
 				width: 'width',
+				height: 'height',
 			},
 			transformOrigin: {
 				0: '0%',
