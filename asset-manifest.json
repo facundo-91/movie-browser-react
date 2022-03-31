@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "./static/css/main.253a08d7.css",
-    "main.js": "./static/js/main.fa191485.js",
-    "static/js/333.46cd00f8.chunk.js": "./static/js/333.46cd00f8.chunk.js",
-    "static/js/793.e8700e30.chunk.js": "./static/js/793.e8700e30.chunk.js",
-    "static/js/653.6bbcb033.chunk.js": "./static/js/653.6bbcb033.chunk.js",
-    "static/js/737.01403d2b.chunk.js": "./static/js/737.01403d2b.chunk.js",
-    "static/js/402.d38cf136.chunk.js": "./static/js/402.d38cf136.chunk.js",
-    "static/js/16.b0455e45.chunk.js": "./static/js/16.b0455e45.chunk.js",
-    "static/js/764.09b30dd6.chunk.js": "./static/js/764.09b30dd6.chunk.js",
-    "static/js/527.4885703d.chunk.js": "./static/js/527.4885703d.chunk.js",
-    "static/js/925.1225b320.chunk.js": "./static/js/925.1225b320.chunk.js",
-    "static/js/236.5fb83a73.chunk.js": "./static/js/236.5fb83a73.chunk.js",
-    "static/media/login-bg.png": "./static/media/login-bg.c548e372c0dfe62bd0d3.png",
-    "static/media/Inter.ttf": "./static/media/Inter.f958c681d7293226a319.ttf",
-    "static/media/poster-placeholder.png": "./static/media/poster-placeholder.f17d23974f66f08046e0.png",
-    "static/media/logo.png": "./static/media/logo.12c86a0f9d81824bcb2f.png",
-    "index.html": "./index.html"
+    "main.css": "/movie-browser-react/static/css/main.c131f268.css",
+    "main.js": "/movie-browser-react/static/js/main.0db5c59d.js",
+    "static/js/333.46cd00f8.chunk.js": "/movie-browser-react/static/js/333.46cd00f8.chunk.js",
+    "static/js/793.e8700e30.chunk.js": "/movie-browser-react/static/js/793.e8700e30.chunk.js",
+    "static/js/653.6bbcb033.chunk.js": "/movie-browser-react/static/js/653.6bbcb033.chunk.js",
+    "static/js/737.01403d2b.chunk.js": "/movie-browser-react/static/js/737.01403d2b.chunk.js",
+    "static/js/402.d38cf136.chunk.js": "/movie-browser-react/static/js/402.d38cf136.chunk.js",
+    "static/js/16.b0455e45.chunk.js": "/movie-browser-react/static/js/16.b0455e45.chunk.js",
+    "static/js/764.09b30dd6.chunk.js": "/movie-browser-react/static/js/764.09b30dd6.chunk.js",
+    "static/js/527.4885703d.chunk.js": "/movie-browser-react/static/js/527.4885703d.chunk.js",
+    "static/js/925.1225b320.chunk.js": "/movie-browser-react/static/js/925.1225b320.chunk.js",
+    "static/js/236.5fb83a73.chunk.js": "/movie-browser-react/static/js/236.5fb83a73.chunk.js",
+    "static/media/login-bg.png": "/movie-browser-react/static/media/login-bg.c548e372c0dfe62bd0d3.png",
+    "static/media/Inter.ttf": "/movie-browser-react/static/media/Inter.f958c681d7293226a319.ttf",
+    "static/media/poster-placeholder.png": "/movie-browser-react/static/media/poster-placeholder.f17d23974f66f08046e0.png",
+    "static/media/logo.png": "/movie-browser-react/static/media/logo.12c86a0f9d81824bcb2f.png",
+    "index.html": "/movie-browser-react/index.html"
   },
   "entrypoints": [
-    "static/css/main.253a08d7.css",
-    "static/js/main.fa191485.js"
+    "static/css/main.c131f268.css",
+    "static/js/main.0db5c59d.js"
   ]
 }
