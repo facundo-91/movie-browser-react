@@ -1,27 +1,25 @@
 {
   "files": {
-    "main.css": "./static/css/main.5f9b9aff.chunk.css",
-    "main.js": "./static/js/main.fd7b24a5.chunk.js",
-    "main.js.map": "./static/js/main.fd7b24a5.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.a1439594.js",
-    "runtime-main.js.map": "./static/js/runtime-main.a1439594.js.map",
-    "static/css/2.20fa7b6d.chunk.css": "./static/css/2.20fa7b6d.chunk.css",
-    "static/js/2.593b2fee.chunk.js": "./static/js/2.593b2fee.chunk.js",
-    "static/js/2.593b2fee.chunk.js.map": "./static/js/2.593b2fee.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/2.20fa7b6d.chunk.css.map": "./static/css/2.20fa7b6d.chunk.css.map",
-    "static/css/main.5f9b9aff.chunk.css.map": "./static/css/main.5f9b9aff.chunk.css.map",
-    "static/js/2.593b2fee.chunk.js.LICENSE.txt": "./static/js/2.593b2fee.chunk.js.LICENSE.txt",
-    "static/media/tailwind.output.css": "./static/media/Inter.f958c681.ttf",
-    "static/media/login-bg.c548e372.png": "./static/media/login-bg.c548e372.png",
-    "static/media/logo.12c86a0f.png": "./static/media/logo.12c86a0f.png",
-    "static/media/poster-placeholder.f17d2397.png": "./static/media/poster-placeholder.f17d2397.png"
+    "main.css": "./static/css/main.253a08d7.css",
+    "main.js": "./static/js/main.fa191485.js",
+    "static/js/333.46cd00f8.chunk.js": "./static/js/333.46cd00f8.chunk.js",
+    "static/js/793.e8700e30.chunk.js": "./static/js/793.e8700e30.chunk.js",
+    "static/js/653.6bbcb033.chunk.js": "./static/js/653.6bbcb033.chunk.js",
+    "static/js/737.01403d2b.chunk.js": "./static/js/737.01403d2b.chunk.js",
+    "static/js/402.d38cf136.chunk.js": "./static/js/402.d38cf136.chunk.js",
+    "static/js/16.b0455e45.chunk.js": "./static/js/16.b0455e45.chunk.js",
+    "static/js/764.09b30dd6.chunk.js": "./static/js/764.09b30dd6.chunk.js",
+    "static/js/527.4885703d.chunk.js": "./static/js/527.4885703d.chunk.js",
+    "static/js/925.1225b320.chunk.js": "./static/js/925.1225b320.chunk.js",
+    "static/js/236.5fb83a73.chunk.js": "./static/js/236.5fb83a73.chunk.js",
+    "static/media/login-bg.png": "./static/media/login-bg.c548e372c0dfe62bd0d3.png",
+    "static/media/Inter.ttf": "./static/media/Inter.f958c681d7293226a319.ttf",
+    "static/media/poster-placeholder.png": "./static/media/poster-placeholder.f17d23974f66f08046e0.png",
+    "static/media/logo.png": "./static/media/logo.12c86a0f9d81824bcb2f.png",
+    "index.html": "./index.html"
   },
   "entrypoints": [
-    "static/js/runtime-main.a1439594.js",
-    "static/css/2.20fa7b6d.chunk.css",
-    "static/js/2.593b2fee.chunk.js",
-    "static/css/main.5f9b9aff.chunk.css",
-    "static/js/main.fd7b24a5.chunk.js"
+    "static/css/main.253a08d7.css",
+    "static/js/main.fa191485.js"
   ]
 }
