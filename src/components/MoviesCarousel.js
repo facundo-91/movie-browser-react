@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import MovieCard from '../components/MovieCard';
 
-const MovieCarousel = ({ title, movieList }) => {
+const MoviesCarousel = ({ title, movieList }) => {
 	SwiperCore.use([Navigation, Pagination]);
 
 	return (
@@ -34,7 +34,7 @@ const MovieCarousel = ({ title, movieList }) => {
 						slidesPerGroup: 8,
 					},
 				}}>
-				{movieList.map((movie) => {
+				{movieList?.map((movie) => {
 					return (
 						<SwiperSlide
 							key={movie.id}
@@ -48,4 +48,4 @@ const MovieCarousel = ({ title, movieList }) => {
 	);
 };
 
-export default MovieCarousel;
+export default MoviesCarousel;

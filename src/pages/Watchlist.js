@@ -2,10 +2,9 @@ import { useFirestore } from '../contexts/FirestoreContext';
 import MovieCard from '../components/MovieCard';
 
 const Watchlist = () => {
-	// Hooks
 	const { moviesWatchlist } = useFirestore();
 
-	return (
+	return moviesWatchlist.length > 0 ? (
 		<div className='pt-20 pb-4 mx-1/20 md:pt-24 md:pb-16'>
 			<h3 className='ml-1 mb-1 text-lg font-bold md:text-1.5vw md:mb-2'>Your Watchlist:</h3>
 			<div className='flex flex-wrap'>
@@ -19,6 +18,12 @@ const Watchlist = () => {
 					);
 				})}
 			</div>
+		</div>
+	) : (
+		<div className='flex items-center justify-center w-full h-screen px-1/20'>
+			<h1 className='text-xl text-center md:text-2xl'>
+				You don't have any Movies added to your watchlist yet.
+			</h1>
 		</div>
 	);
 };

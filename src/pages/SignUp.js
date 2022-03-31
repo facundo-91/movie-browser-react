@@ -1,32 +1,27 @@
 import { useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import appLogo from '../assets/logo.png';
 import background from '../assets/login-bg.png';
 
 const SignUp = () => {
-	// Hooks
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
-	const { signUpEmail } = useAuth();
-	const history = useHistory();
+	const { signUpEmail, currentUser } = useAuth();
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
 
-	// Methods
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			setError('');
 			setLoading(true);
 			if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-				setLoading(false);
 				setError('Passwords do not match');
+				setLoading(false);
 			} else {
 				await signUpEmail(emailRef.current.value, passwordRef.current.value);
-				setLoading(false);
-				history.push('/');
 			}
 		} catch (err) {
 			setError(err.message);
@@ -34,17 +29,21 @@ const SignUp = () => {
 		}
 	};
 
+	const backgroundImage = window.matchMedia('(max-width: 767px)').matches
+		? '#030303'
+		: `linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(${background})`;
+
+	if (currentUser) return <Redirect to='/' />;
+
 	return (
 		<div
 			className='min-h-screen pb-20 bg-cover'
 			style={{
-				background: window.matchMedia('(max-width: 767px)').matches
-					? '#030303'
-					: `linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(${background})`,
+				background: backgroundImage,
 			}}>
 			<div className='flex w-full'>
 				<Link to='/' className='w-8 h-8 mx-4 my-2 md:my-4 md:mx-8 md:w-12 md:h-12'>
-					<img className='w-auto h-auto' src={appLogo} alt='App logo'></img>
+					<img className='w-auto h-auto' src={appLogo} alt='App logo' />
 				</Link>
 			</div>
 			<div className='px-5 py-4 md:bg-opacity-75 md:max-w-md md:mx-auto md:bg-black-custom md:px-16 md:py-20'>
@@ -58,9 +57,10 @@ const SignUp = () => {
 							className='block w-full h-12 px-5 pt-4 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
 							id='emailInput'
 							type='email'
-							ref={emailRef}
 							placeholder=' '
-							required></input>
+							required
+							ref={emailRef}
+						/>
 						<label
 							className='absolute ml-5 text-sm duration-300 top-30 cursor-text origin-0 text-gray-input-text md:text-base'
 							htmlFor='emailInput'>
@@ -72,9 +72,10 @@ const SignUp = () => {
 							className='block w-full h-12 px-5 pt-4 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
 							id='passwordInput'
 							type='password'
-							ref={passwordRef}
 							placeholder=' '
-							required></input>
+							required
+							ref={passwordRef}
+						/>
 						<label
 							className='absolute ml-5 text-sm duration-300 top-30 cursor-text origin-0 text-gray-input-text md:text-base'
 							htmlFor='passwordInput'>
@@ -86,9 +87,10 @@ const SignUp = () => {
 							className='block w-full h-12 px-5 pt-4 text-base leading-4 rounded appearance-none bg-gray-input focus:outline-none'
 							id='passwordConfirmInput'
 							type='password'
-							ref={passwordConfirmRef}
 							placeholder=' '
-							required></input>
+							required
+							ref={passwordConfirmRef}
+						/>
 						<label
 							className='absolute ml-5 text-sm duration-300 top-30 cursor-text origin-0 text-gray-input-text md:text-base'
 							htmlFor='passwordConfirmInput'>
@@ -96,7 +98,7 @@ const SignUp = () => {
 						</label>
 					</div>
 					<button
-						className='w-full h-12 mt-4 font-bold rounded bg-red-custom'
+						className='w-full h-12 mt-4 font-bold rounded bg-red-custom disabled:opacity-50'
 						type='submit'
 						disabled={loading}>
 						Sign Up

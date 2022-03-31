@@ -95,7 +95,7 @@ module.exports = {
 			cursor: ['focus'],
 			filter: ['hover'],
 			invert: ['hover'],
-			opacity: ['active'],
+			opacity: ['active', 'disabled'],
 			padding: ['focus', 'hover'],
 			transform: ['hover'],
 			transitionProperty: ['hover'],

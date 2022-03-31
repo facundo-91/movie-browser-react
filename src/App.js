@@ -1,60 +1,51 @@
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { MoviesProvider } from './contexts/MoviesContext';
 import { FirestoreProvider } from './contexts/FirestoreContext';
-import NavRoute from './pages/NavRoute';
+import LoadingSpinner from './components/LoadingSpinner';
+import NavContainer from './components/NavContainer';
 import PrivateRoute from './pages/PrivateRoute';
-import Dashboard from './pages/Dashboard';
-import MovieInfo from './pages/MovieInfo';
 import SearchResult from './pages/SearchResult';
-import Profile from './pages/Profile';
-import Watchlist from './pages/Watchlist';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import ForgotPassword from './pages/ForgotPassword';
-import updateEmail from './pages/UpdateEmail';
-import updatePassword from './pages/UpdatePassword';
-import updateUser from './pages/UpdateUser';
-import deleteAccount from './pages/DeleteAccount';
+import Dashboard from './pages/Dashboard';
+const MovieInfo = lazy(() => import('./pages/MovieInfo'));
+const Profile = lazy(() => import('./pages/Profile'));
+const Watchlist = lazy(() => import('./pages/Watchlist'));
+const SignIn = lazy(() => import('./pages/SignIn'));
+const SignUp = lazy(() => import('./pages/SignUp'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const UpdateEmail = lazy(() => import('./pages/UpdateEmail'));
+const UpdatePassword = lazy(() => import('./pages/UpdatePassword'));
+const UpdateUser = lazy(() => import('./pages/UpdateUser'));
+const DeleteAccount = lazy(() => import('./pages/DeleteAccount'));
 
 const App = () => {
 	return (
-		<Router>
-			<AuthProvider>
-				<FirestoreProvider>
-					<MoviesProvider>
-						<Switch>
-							<NavRoute exact path='/' component={Dashboard} />
-							<NavRoute path='/movie/:id' component={MovieInfo} />
-							<NavRoute path='/search/:query' component={SearchResult} />
-							<NavRoute path='/profile' component={() => <PrivateRoute component={Profile} />} />
-							<NavRoute
-								path='/update-email'
-								component={() => <PrivateRoute component={updateEmail} />}
-							/>
-							<NavRoute
-								path='/update-password'
-								component={() => <PrivateRoute component={updatePassword} />}
-							/>
-							<NavRoute
-								path='/update-user'
-								component={() => <PrivateRoute component={updateUser} />}
-							/>
-							<NavRoute
-								path='/delete-account'
-								component={() => <PrivateRoute component={deleteAccount} />}
-							/>
-							<NavRoute
-								path='/watchlist'
-								component={() => <PrivateRoute component={Watchlist} />}
-							/>
-							<Route path='/signin' component={SignIn} />
-							<Route path='/signup' component={SignUp} />
-							<Route path='/forgot-password' component={ForgotPassword} />
-						</Switch>
-					</MoviesProvider>
-				</FirestoreProvider>
-			</AuthProvider>
+		<Router basename='/movie-browser-react'>
+			<Suspense fallback={<LoadingSpinner />}>
+				<AuthProvider>
+					<FirestoreProvider>
+						<MoviesProvider>
+							<Switch>
+								<Route exact path='/signin' children={<SignIn />} />
+								<Route exact path='/signup' children={<SignUp />} />
+								<Route exact path='/forgot-password' children={<ForgotPassword />} />
+								<NavContainer>
+									<Route exact path='/' children={<Dashboard />} />
+									<Route exact path='/movie/:id' children={<MovieInfo />} />
+									<Route exact path='/search/:query' children={<SearchResult />} />
+									<PrivateRoute exact path='/profile' children={<Profile />} />
+									<PrivateRoute exact path='/update-email' children={<UpdateEmail />} />
+									<PrivateRoute exact path='/update-password' children={<UpdatePassword />} />
+									<PrivateRoute exact path='/update-user' children={<UpdateUser />} />
+									<PrivateRoute exact path='/delete-account' children={<DeleteAccount />} />
+									<PrivateRoute exact path='/watchlist' children={<Watchlist />} />
+								</NavContainer>
+							</Switch>
+						</MoviesProvider>
+					</FirestoreProvider>
+				</AuthProvider>
+			</Suspense>
 		</Router>
 	);
 };

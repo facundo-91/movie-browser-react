@@ -1,14 +1,18 @@
 import { useMovies } from '../contexts/MoviesContext';
 import MovieCard from '../components/MovieCard';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { useParams } from 'react-router-dom';
 
 const SearchResult = () => {
-	// Hooks
-	const { searchResult, searchInputValue } = useMovies();
+	const { searchResult, isLoading } = useMovies();
+	const { query } = useParams();
 
-	return (
+	return isLoading ? (
+		<LoadingSpinner />
+	) : searchResult.length > 0 ? (
 		<div className='pt-20 pb-4 mx-1/20 md:pt-24 md:pb-16'>
 			<h3 className='ml-1 mb-1 text-lg font-bold md:text-1.5vw md:mb-2'>
-				Search results: {searchInputValue}
+				Search results for: "{query}"
 			</h3>
 			<div className='flex flex-wrap'>
 				{searchResult.map((movie) => {
@@ -21,6 +25,10 @@ const SearchResult = () => {
 					);
 				})}
 			</div>
+		</div>
+	) : (
+		<div className='flex items-center justify-center w-full h-screen px-1/20'>
+			<h1 className='text-xl text-center md:text-2xl'>No results for: "{query}"</h1>
 		</div>
 	);
 };

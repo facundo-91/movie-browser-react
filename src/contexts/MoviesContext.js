@@ -13,6 +13,7 @@ const MoviesProvider = ({ children }) => {
 	// States
 	const [searchInputValue, setSearchInputValue] = useState('');
 	const [searchResult, setSearchResult] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	// Methods and states to pass to the Provider
 	const value = {
@@ -20,6 +21,8 @@ const MoviesProvider = ({ children }) => {
 		setSearchInputValue,
 		searchResult,
 		setSearchResult,
+		isLoading,
+		setIsLoading,
 	};
 
 	return <MoviesContext.Provider value={value}>{children}</MoviesContext.Provider>;

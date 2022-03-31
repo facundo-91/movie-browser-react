@@ -1,47 +1,53 @@
 import { useEffect, useState } from 'react';
-import MainMovieInfo from '../components/MainMovieInfo';
-import ActorsInfo from '../components/ActorsInfo';
+import { useParams } from 'react-router-dom';
+import MovieDetails from '../components/MovieDetails';
+import MovieCredits from '../components/MovieCredits';
 import MovieTrailer from '../components/MovieTrailer';
 import MovieRecommendations from '../components/MovieRecommendations';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { getFullMovieInfo } from '../services/api';
 
-const MovieInfo = ({ match }) => {
-	// Hooks
-	const [movieInfo, setMovieInfo] = useState({});
-	const [loading, setLoading] = useState(true);
+const MovieInfo = () => {
+	const { id } = useParams();
+	const [movieInfo, setMovieInfo] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
 
-	// Effects
-	// Fetch Movie Info
+	// Fetch and save movie info
 	useEffect(() => {
-		const getMovieInfo = async () => {
+		const fetch = async () => {
 			try {
-				setLoading(true);
-				const url = `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=${process.env.REACT_APP_TMDB_API}&append_to_response=release_dates,credits,videos,recommendations`;
-				const response = await fetch(url);
-				const responseJson = await response.json();
-				setMovieInfo(responseJson);
-				setLoading(false);
-			} catch (e) {
-				console.error(e);
+				setIsLoading(true);
+				const response = await getFullMovieInfo(id);
+				setMovieInfo(response);
+			} catch (err) {
+				console.error(err);
+			} finally {
+				setIsLoading(false);
 			}
 		};
-		getMovieInfo();
-	}, [match.params.id, setMovieInfo]);
+		fetch();
+	}, [id]);
 
-	return (
-		!loading && (
-			<div
-				className='bg-fixed bg-center bg-cover'
-				style={{
-					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original${movieInfo.backdrop_path})`,
-				}}>
-				<div className='w-full py-20 mx-auto px-1/20'>
-					<MainMovieInfo movieData={movieInfo} />
-					<ActorsInfo movieData={movieInfo} />
-					<MovieTrailer movieData={movieInfo} />
-					<MovieRecommendations movieData={movieInfo} />
-				</div>
+	const backgroundImage =
+		movieInfo?.backdrop_path !== undefined
+			? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original${movieInfo?.backdrop_path})`
+			: 'none';
+
+	return isLoading ? (
+		<LoadingSpinner />
+	) : (
+		<main
+			className='bg-fixed bg-center bg-cover'
+			style={{
+				backgroundImage: backgroundImage,
+			}}>
+			<div className='w-full py-20 mx-auto px-1/20'>
+				<MovieDetails movieInfo={movieInfo} />
+				<MovieCredits movieInfo={movieInfo} />
+				<MovieTrailer movieInfo={movieInfo} />
+				<MovieRecommendations movieInfo={movieInfo} />
 			</div>
-		)
+		</main>
 	);
 };
 

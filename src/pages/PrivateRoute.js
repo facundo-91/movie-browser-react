@@ -1,13 +1,25 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-const PrivateRoute = ({ exact, path, component: Component }) => {
+const PrivateRoute = ({ children, ...rest }) => {
 	const { currentUser } = useAuth();
 
-	return currentUser ? (
-		<Route exact={exact} path={path} render={(props) => <Component {...props} />} />
-	) : (
-		<Redirect to='/signin' />
+	return (
+		<Route
+			{...rest}
+			render={({ location }) =>
+				currentUser ? (
+					children
+				) : (
+					<Redirect
+						to={{
+							pathname: '/signin',
+							state: { from: location },
+						}}
+					/>
+				)
+			}
+		/>
 	);
 };
 
